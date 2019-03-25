@@ -22,7 +22,9 @@
  - ID                                unique for each product
  - Name
  - Manufacturer
+ - Place of origin
  - Unit price
+ - Discount if any
  - Amount available at HQ/warehouse
  - Overall availability              warehouse stockpile <= 0 ? if yes, out of stock, else available
  - Shop ID                           unique for each shop
