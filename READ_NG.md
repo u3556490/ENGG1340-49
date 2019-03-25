@@ -36,3 +36,4 @@
  ## Problem Setting
  The problem is set in a chain grocery store or supermarket, where the need to manage the stock of goods clearly and efficiently is present. This system would be installed in the computer(s) at the company headquarters and is used to manage the stockpile of commodities **at the main warehouse**. It is assumed that restocking of goods is done at the warehouse (it is assumed that **the company has only _one_ such warehouse**) and goods are delivered to individual shops/stores/branches when they run out of stock.
   To-do
+$ git push -u origin master
