@@ -1,29 +1,14 @@
 # include "main.h"
 # include <iostream>
+# include <vector>
 using namespace std;
 using namespace main_header;
 
-// ------------------------------
-// Struct Commodity: each instance of 
-// this struct corresponds to one entry
-// in the inventory table, i.e. a row.
-// ------------------------------
-struct main_header::Commodity{
-	string id;					//TODO: design id
-	string name;
-	string manufacturer;
-	double price;
-	string expiry_date;			//TODO: design and handle dates
-	int stock_amount;
-	int warning_level;			//TODO: is warning level global?
-	bool stock_warning;
-	bool out_of_stock;
-	string shop_id;
-	int shop_amount;
-	bool shop_stock_warning;
-	bool shop_out_of_stock;
-};
+// Using a vector to hold contents of the table
+// Because vectors are dynamic and allow good random access.
+vector<Commodity> inventory;
 
+const int INIT_INVENTORY_SIZE = 50;
 
 // -----------------------------------
 // Function mainmenu : Prints a list of options 
@@ -44,12 +29,22 @@ void main_header::mainmenu(){
 	// TODO
 }
 
+// -----------------------------------
+// Function init : Readies the inventory vector.
+// @params none
+// @return none
+// -----------------------------------
+void init(){
+	inventory.reserve(INIT_INVENTORY_SIZE);
+}
+
 // ----------------------
 // Main function here
 // @params none
 // @return int exit code
 // ---------------------
 int main(){
+	init();
 	mainmenu();
 	return 0;
 }
