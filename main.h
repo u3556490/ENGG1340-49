@@ -10,7 +10,7 @@ namespace main_header{
 // in the inventory table, i.e. a row.
 // ------------------------------
 struct Commodity{
-	std::string id;						//TODO: design id
+	std::string id;						//TODO: design id paradigm
 	std::string name;
 	std::string manufacturer;
 	double price;

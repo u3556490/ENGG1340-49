@@ -1,4 +1,13 @@
 # include "main.h"
+# include "update.h"
+# include "addentry.h"
+# include "rmentry.h"
+# include "search.h"
+# include "filter.h"
+# include "sort.h"
+# include "stockalert.h"
+# include "imexport.h"
+# include <string>
 # include <iostream>
 # include <vector>
 using namespace std;

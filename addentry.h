@@ -4,12 +4,21 @@
 #include "main.h"
 
 // -----------------------------------
-// Function add: adds the new commodity to the end of the list.
-// @params Commodity commodity, the entry to add
+// Function add+one: adds ONE new commodity to the end of the list.
+// @params Commodity item, the entry to add
 //		   vector<Commodity> list, the inventory to add into
 // @return none
 // -----------------------------------
-void add(main_header::Commodity commodity, std::vector<main_header::Commodity> list);
+void add_one(std::vector<main_header::Commodity> &list, main_header::Commodity item);
+
+// -----------------------------------
+// Function add: adds new commodities to the list. Will be called
+// immediately when the user wants to add stuff, so direct him to
+// the right functions by calling them.
+// @params vector<Commodity> list, the inventory to add into
+// @return none
+// -----------------------------------
+void add(std::vector<main_header::Commodity> &list);
 
 // -----------------------------------
 // Function getCommodityData: gets data about a commodity 
@@ -20,7 +29,7 @@ void add(main_header::Commodity commodity, std::vector<main_header::Commodity> l
 main_header::Commodity getCommodityData();
 
 // -----------------------------------
-// Function getCommodityData: gets data about a commodity 
+// Function getCommodityFile: gets data about a commodity 
 // entry to be added via a file specified by user input.
 // @params none
 // @return Commodity, a new commodity instance that holds the data

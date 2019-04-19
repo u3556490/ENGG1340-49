@@ -7,17 +7,23 @@ using namespace std;
 using namespace main_header;
 
 // -----------------------------------
-// Function add: adds the new commodity to the end of the list.
-// @params Commodity commodity, the entry to add
+// Function add+one: adds ONE new commodity to the end of the list.
+// @params Commodity item, the entry to add
 //		   vector<Commodity> list, the inventory to add into
 // @return none
 // -----------------------------------
-// Use functions under the vector header
-// Be aware of the capacity of the list and extend if necessary
-// (There should be functions that perform this flawlessly)
-// Note that pushback may be a bit slow but shouldn't be much of an issue
+void add_one(vector<:Commodity> &list, Commodity item){
+	
+}
+
 // -----------------------------------
-void add(Commodity commodity, vector<Commodity> list){
+// Function add: adds new commodities to the list. Will be called
+// immediately when the user wants to add stuff, so direct him to
+// the right functions by calling them.
+// @params vector<Commodity> list, the inventory to add into
+// @return none
+// -----------------------------------
+void add(vector<Commodity> &list){
 	
 }
 
@@ -38,7 +44,7 @@ Commodity getCommodityData(){
 }
 
 // -----------------------------------
-// Function getCommodityData: gets data about a commodity 
+// Function getCommodityFile: gets data about a commodity 
 // entry to be added via a file specified by user input.
 // @params none
 // @return Commodity, a new commodity instance that holds the data
