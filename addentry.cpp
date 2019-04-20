@@ -12,7 +12,7 @@ using namespace main_header;
 //		   vector<Commodity> list, the inventory to add into
 // @return none
 // -----------------------------------
-void add_one(vector<:Commodity> &list, Commodity item){
+void add_one(vector<Commodity> &list, Commodity item){
 	
 }
 

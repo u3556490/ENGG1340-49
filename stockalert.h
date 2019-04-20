@@ -10,7 +10,7 @@
 //         int level: the level to set to
 // @return none
 // ----------------------------
-void setLevel(Commodity com, int level);
+void setLevel(main_header::Commodity com, int level);
 
 // ----------------------------
 // function check_stock: loops through the whole inventory to find entries whose

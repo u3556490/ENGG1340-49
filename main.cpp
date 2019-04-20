@@ -7,6 +7,7 @@
 # include "sort.h"
 # include "stockalert.h"
 # include "imexport.h"
+# include "printinv.h"
 # include <string>
 # include <iostream>
 # include <vector>
@@ -18,6 +19,16 @@ using namespace main_header;
 vector<Commodity> inventory;
 
 const int INIT_INVENTORY_SIZE = 50;
+
+// -----------------------------------
+// Function init : Readies the inventory vector.
+// @params none
+// @return none
+// -----------------------------------
+void init(){
+	inventory.reserve(INIT_INVENTORY_SIZE);
+}
+
 
 // -----------------------------------
 // Function mainmenu : Prints a list of options 
@@ -36,15 +47,7 @@ const int INIT_INVENTORY_SIZE = 50;
 // -----------------------------------
 void main_header::mainmenu(){
 	// TODO
-}
-
-// -----------------------------------
-// Function init : Readies the inventory vector.
-// @params none
-// @return none
-// -----------------------------------
-void init(){
-	inventory.reserve(INIT_INVENTORY_SIZE);
+	init();
 }
 
 // ----------------------
@@ -53,7 +56,6 @@ void init(){
 // @return int exit code
 // ---------------------
 int main(){
-	init();
 	mainmenu();
 	return 0;
 }
