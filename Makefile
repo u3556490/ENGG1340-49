@@ -37,4 +37,4 @@ project : main.o addentry.o rmentry.o search.o sort.o filter.o imexport.o stocka
 
 .PHONY: clean
 clean:
-	rm -rf *.o *.gch *.exe
+	rm -rf *.o *.gch *.exe *.stackdump

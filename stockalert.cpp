@@ -6,14 +6,27 @@ using namespace std;
 using namespace main_header;
 
 // ----------------------------
-// function setLevel: sets warning level of commodity entry
+// function setOneLevel: sets warning level of commodity entry
 // specified to the value given.
 // @params Commodity com: the commodity to manipulate
 //         int level: the level to set to
 // @return none
 // ----------------------------
-void setLevel(Commodity com, int level){
+void setOneLevel(Commodity com, int level){
+	com.warning_level = level;
+}
+
+// ----------------------------
+// function setLevel: gets call upon level change prompt.
+// @params vector<Commodity> list: the inventory to manipulate
+// @return none
+// ----------------------------
+void setLevel(vector<Commodity> list){
+	//fetch item
 	
+	//call set Level
+	
+	//return
 }
 
 // ----------------------------
@@ -23,7 +36,33 @@ void setLevel(Commodity com, int level){
 // @return vector<int>: a list of indices of items that are having issues
 // ----------------------------
 vector<int> check_stock(vector<Commodity> list){
+	vector<int> result {};
+	result.reserve(10);
+	//if size < 1, return none
+	if (list.size() < 1)
+		return result;
 	
+	int index = 0;
+	//for each
+	for (vector<Commodity>::iterator i = list.begin(); i != list.end(); i++){
+		//check hq stockpile
+		if ((*i).stock_amount < (*i).warning_level){
+			result.push_back(index);
+			(*i).stock_warning = 1;
+			if ((*i).stock_amount < 1)
+				(*i).out_of_stock = 1;
+		}
+		//check shop stockpile
+		if ((*i).shop_amount < (*i).warning_level){
+			result.push_back(index);
+			(*i).shop_stock_warning = 1;
+			if ((*i).shop_amount < 1)
+				(*i).shop_out_of_stock = 1;
+		}
+		index++;
+	}
+	
+	return result;
 }
 
 /*
