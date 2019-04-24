@@ -1,7 +1,9 @@
 #include "main.h"
 #include "sort.h"
 #include <vector>
+#include <string>
 #include <iostream>
+#include <algorithm>
 using namespace std;
 using namespace main_header;
 
@@ -10,6 +12,9 @@ using namespace main_header;
 */
 
 // Implement additional functions whenever necessary
+bool id_comp(Commodity c1, Commodity c2){
+	return (c1.id) < (c2.id);
+}
 
 // --------------------------------------
 // function sort: called when the user wills it.
@@ -17,7 +22,7 @@ using namespace main_header;
 // @params vector<Commodity> original: original list of items.
 // @return vector<Commodity>: sorted list of items.
 // --------------------------------------
-vector<Commodity> sort_list(vector<Commodity> original){
+void sort_list(vector<Commodity> &original){
 	vector<Commodity> sorted;
 	//get which column to sort by
 	char col;
@@ -37,16 +42,21 @@ vector<Commodity> sort_list(vector<Commodity> original){
 	cout << "(R) for shop stockpile warning low ones first" << endl;
 	cout << "(T) for shop out of stock ones first" << endl;
 	cout << "-------------------------------------------------------------------" << endl;
-	cout << "Enter a letter: " << endl;
+	cout << "Enter a letter: ";
 	cin >> col;
+	col = toupper(col);
 	//massive switch-case statement
 	switch (col){
-		
+		case 'I':{
+			sort(original.begin(), original.end(), id_comp);
+			break;
+		}	
+		default: cout << "Please check your input and try again. No sorting has been performed.\n";
 	}
 	
 }
 
-/*debug only
+/*/debug only
 int main(){
 	return 0;
 }*/

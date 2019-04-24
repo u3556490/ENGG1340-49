@@ -54,7 +54,7 @@ void main_header::mainmenu(){
 	while (!quit){
 		//status
 		probs = check_stock(inventory);
-		cout << "--------------------------------------------------------------------" << endl;
+		cout << "=================================================================" << endl;
 		cout << "The inventory is now of size: " << inventory.size() << "." << endl;
 		if (probs.size() < 1){
 			cout << "There are no special warnings. ";
@@ -79,7 +79,7 @@ void main_header::mainmenu(){
 		cout << "Set stockpile (W)arning level" << endl;
 		cout << "(C)heck stock status" << endl;
 		cout << "E(X)it the application" << endl;
-		cout << "-------------------------------------------------------------------" << endl;
+		cout << "================================================================" << endl;
 		cout << "Enter a letter: ";
 		//get option
 		cin >> option;
@@ -115,7 +115,7 @@ void main_header::mainmenu(){
 				break;
 			}
 			case ('O'):{
-				inventory = sort_list(inventory);
+				sort_list(inventory);
 				break;
 			}
 			case ('W'):{

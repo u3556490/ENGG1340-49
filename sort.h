@@ -16,6 +16,6 @@
 // @params vector<Commodity> original: original list of items.
 // @return vector<Commodity>: sorted list of items.
 // --------------------------------------
-std::vector<main_header::Commodity> sort_list(std::vector<main_header::Commodity> original);
+void sort_list(std::vector<main_header::Commodity> &original);
 
 #endif /* SORINV */

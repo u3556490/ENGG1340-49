@@ -72,11 +72,11 @@ vector<Commodity> import_file(){
 	
 	ifs.close();
 	
-	//debug use
+	/*/debug use
 	for (vector<Commodity>::iterator i = list.begin(); i != list.end(); i++){
 		cout << (*i).id << ";" << (*i).name << ";" << (*i).manufacturer << ";" << (*i).price << ";" << (*i).expiry_date << ";";
 		cout << (*i).stock_amount << ";" << (*i).warning_level << ";" << (*i).shop_id << ";" << (*i).shop_amount << ";\n";
-	}
+	}*/
 	
 	cout << "Import successful. " << list.size() << " entries retrieved from file." << endl;
 	return list;
@@ -120,7 +120,7 @@ bool export_file(vector<Commodity> list){
 	}
 	
 	ofs.close();
-	cout << "Export successful. " << list.size() << "entries written to file." << endl;
+	cout << "Export successful. " << list.size() << " entries written to file." << endl;
 	return success;
 }
 

@@ -2,34 +2,34 @@ CC=g++
 CFLAGS1=-pedantic-errors -std=c++11 -g
 CFLAGS2=-I.
 
-addentry.o : addentry.cpp main.cpp
+addentry.o : addentry.cpp main.h
 	$(CC) $(CFLAGS1) -c $^ $(CFLAGS2)
 
-rmentry.o : rmentry.cpp main.cpp
+rmentry.o : rmentry.cpp main.h
 	$(CC) $(CFLAGS1) -c $^ $(CFLAGS2)
 
-search.o : search.cpp main.cpp
+search.o : search.cpp main.h
 	$(CC) $(CFLAGS1) -c $^ $(CFLAGS2)
 
-sort.o : sort.cpp main.cpp
+sort.o : sort.cpp main.h
 	$(CC) $(CFLAGS1) -c $^ $(CFLAGS2)
 
-filter.o : filter.cpp main.cpp
+filter.o : filter.cpp main.h
 	$(CC) $(CFLAGS1) -c $^ $(CFLAGS2)
 
-imexport.o : imexport.cpp main.cpp
+imexport.o : imexport.cpp main.h
 	$(CC) $(CFLAGS1) -c $^ $(CFLAGS2)
 
-stockalert.o : stockalert.cpp main.cpp
+stockalert.o : stockalert.cpp main.h
 	$(CC) $(CFLAGS1) -c $^ $(CFLAGS2)
 
-update.o : update.cpp main.cpp
+update.o : update.cpp main.h
 	$(CC) $(CFLAGS1) -c $^ $(CFLAGS2)
 
-printinv.o : printinv.cpp main.cpp
+printinv.o : printinv.cpp main.h
 	$(CC) $(CFLAGS1) -c $^ $(CFLAGS2)
 
-main.o : main.cpp 
+main.o : main.cpp main.h
 	$(CC) $(CFLAGS1) -c $^ $(CFLAGS2)
 
 project : main.o addentry.o rmentry.o search.o sort.o filter.o imexport.o stockalert.o update.o printinv.o
