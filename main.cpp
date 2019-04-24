@@ -53,17 +53,19 @@ void main_header::mainmenu(){
 	char option;
 	while (!quit){
 		//status
-		probs = check_stock(inventory);
+		probs = check_stock(& inventory);
 		cout << "=================================================================" << endl;
 		cout << "The inventory is now of size: " << inventory.size() << "." << endl;
 		if (probs.size() < 1){
 			cout << "There are no special warnings. ";
 		} else {
+			cout << "-------------------------------------------------------------" << endl;
 			cout << "There are items with stock issues. Namely: ";
 			for (int i = 0; i < probs.size(); i++){
-				cout << inventory[probs[i]].name << ", ";
+				cout << "\"" << inventory[probs[i]].name << "\", ";
 			}
 			cout << endl;
+			cout << "-------------------------------------------------------------" << endl;
 		}
 		cout << "Ready\n";
 		cout << "What do you want to do?" << endl;
@@ -123,7 +125,7 @@ void main_header::mainmenu(){
 				break;
 			}
 			case ('C'):{
-				probs = check_stock(inventory);
+				probs = check_stock(& inventory);
 				break;
 			}
 			case ('X'):{

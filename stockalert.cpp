@@ -32,19 +32,19 @@ void setLevel(vector<Commodity> list){
 // ----------------------------
 // function check_stock: loops through the whole inventory to find entries whose
 // stock amount at shop or at HQ is below the warning level.
-// @params vector<Commodity> list: the list to look through
+// @params vector<Commodity>* list: the list to look through
 // @return vector<int>: a list of indices of items that are having issues
 // ----------------------------
-vector<int> check_stock(vector<Commodity> list){
+vector<int> check_stock(vector<Commodity>* list){
 	vector<int> result {};
 	result.reserve(10);
 	//if size < 1, return none
-	if (list.size() < 1)
+	if (list->size() < 1)
 		return result;
 	
 	int index = 0;
 	//for each
-	for (vector<Commodity>::iterator i = list.begin(); i != list.end(); i++){
+	for (vector<Commodity>::iterator i = list->begin(); i != list->end(); i++){
 		//check hq stockpile
 		if ((*i).stock_amount < (*i).warning_level){
 			result.push_back(index);
@@ -57,7 +57,7 @@ vector<int> check_stock(vector<Commodity> list){
 			result.push_back(index);
 			(*i).shop_stock_warning = 1;
 			if ((*i).shop_amount < 1)
-				(*i).shop_out_of_stock = 1;
+				(*i).shop_out_of_stock = true;
 		}
 		index++;
 	}

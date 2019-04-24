@@ -13,8 +13,8 @@
 // --------------------------------------
 // function sort_list: called when the user wills it.
 // Take input based on which column should the sort be done.
-// @params vector<Commodity> original: original list of items.
-// @return vector<Commodity>: sorted list of items.
+// @params vector<Commodity> %original: original list of items.
+// @return none
 // --------------------------------------
 void sort_list(std::vector<main_header::Commodity> &original);
 
