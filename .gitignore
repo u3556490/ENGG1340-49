@@ -1,0 +1,5 @@
+*.txt
+*.exe
+*.gch
+*.o
+*.stackdump
