@@ -42,11 +42,11 @@ bool level_comp(Commodity c1, Commodity c2){
 }
 
 bool warning_comp(Commodity c1, Commodity c2){
-	return (c1.stock_warning && !(c2.stock_warning));
+	return (c1.stock_warning);
 }
 
 bool outofstock_comp(Commodity c1, Commodity c2){
-	return (c1.out_of_stock && !c2.out_of_stock);
+	return (c1.out_of_stock);
 }
 
 bool shopid_comp(Commodity c1, Commodity c2){
@@ -62,7 +62,7 @@ bool swarning_comp(Commodity c1, Commodity c2){
 }
 
 bool soutofstock_comp(Commodity c1, Commodity c2){
-	return (c1.shop_out_of_stock && !c2.shop_out_of_stock);
+	return (c1.shop_out_of_stock);
 }
 
 // --------------------------------------
@@ -72,6 +72,11 @@ bool soutofstock_comp(Commodity c1, Commodity c2){
 // @return none
 // --------------------------------------
 void sort_list(vector<Commodity> &original){
+	if (original.size() < 2){
+		cout << "The inventory is too small to sort meaningfully.\n";
+		return;
+	}
+	
 	bool sorted = 1;
 	//get which column to sort by
 	char col;
@@ -84,11 +89,11 @@ void sort_list(vector<Commodity> &original){
 	cout << "(X) for expiry date" << endl;
 	cout << "(A) for stock amount at warehouse" << endl;
 	cout << "(L) for stockpile warning level" << endl;
-	cout << "(W) for stockpile warning low ones first" << endl;
+	cout << "(W) for stockpile warning having ones first" << endl;
 	cout << "(O) for out of stock ones first" << endl;
 	cout << "(S) for shop id" << endl;
 	cout << "(U) for shop stockpile amount" << endl;
-	cout << "(R) for shop stockpile warning low ones first" << endl;
+	cout << "(R) for shop stockpile warning having ones first" << endl;
 	cout << "(T) for shop out of stock ones first" << endl;
 	cout << "-------------------------------------------------------------------" << endl;
 	cout << "Enter a letter: ";
@@ -158,6 +163,17 @@ void sort_list(vector<Commodity> &original){
 		cout << "Sorting successfully completed." << endl;
 	else
 		cout << "No sorting has been performed." << endl;
+}
+
+// --------------------------------------
+// function sort_id: Sorts the list by id, takes no user input.
+// Invoked as the user imports an inventory, as an initialization
+// measure.
+// @params vector<Commodity> %original: original list of items.
+// @return none
+// --------------------------------------
+void sort_id(vector<Commodity> &original){
+	stable_sort(original.begin(), original.end(), id_comp);
 }
 
 /*/debug only

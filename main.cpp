@@ -48,6 +48,7 @@ void init(){
 void main_header::mainmenu(){
 	init();
 	vector<int> probs;
+	vector<Commodity> * current = &inventory;	//the current list to be shown. Depends on the filters
 	
 	bool quit = 0;
 	char option;
@@ -56,16 +57,27 @@ void main_header::mainmenu(){
 		probs = check_stock(& inventory);
 		cout << "=================================================================" << endl;
 		cout << "The inventory is now of size: " << inventory.size() << "." << endl;
-		if (probs.size() < 1){
+		if (probs.size() < 1){																	//have problems?
 			cout << "There are no special warnings. ";
-		} else {
-			cout << "-------------------------------------------------------------" << endl;
+		} else {																				//print names and ids of items
+			cout << "---------------------------------------------------------------" << endl;
 			cout << "There are items with stock issues. Namely: ";
 			for (int i = 0; i < probs.size(); i++){
-				cout << "\"" << inventory[probs[i]].name << "\", ";
+				cout << "\"" << inventory[probs[i]].name << "\"(" << inventory[probs[i]].id;
+				if (inventory[probs[i]].out_of_stock){
+					cout << ", warehouse out of stock ";
+				}
+				if (inventory[probs[i]].shop_out_of_stock){
+					cout << ", out of stock at shop " << inventory[probs[i]].shop_id;
+				}
+				cout << ")";
+				if ((i+1) == probs.size()){
+					cout << endl;
+				} else {
+					cout << ", ";
+				}
 			}
-			cout << endl;
-			cout << "-------------------------------------------------------------" << endl;
+			cout << "---------------------------------------------------------------" << endl;
 		}
 		cout << "Ready\n";
 		cout << "What do you want to do?" << endl;
@@ -73,13 +85,14 @@ void main_header::mainmenu(){
 		cout << "(A)dd new entry/entries"<< endl;
 		cout << "(R)emove obsolete entry/entries" << endl;
 		cout << "(I)mport and load inventory from file" << endl;
-		cout << "(E)xport and save current inventory to file" << endl;
+		cout << "(E)xport and save current (with filters) inventory to file" << endl;
 		cout << "(S)earch for entries" << endl;
 		cout << "(F)ilter entries content" << endl;
-		cout << "Show inventory contents (P)" << endl;
-		cout << "S(O)rt all entries in order" << endl;
+		cout << "(U)nset all filters' effect" << endl;
+		cout << "(P)rint current inventory (with filters) contents on screen" << endl;
+		cout << "S(O)rt current inventory (with filters) in order" << endl;
 		cout << "Set stockpile (W)arning level" << endl;
-		cout << "(C)heck stock status" << endl;
+		cout << "(C)heck stock status once more" << endl;
 		cout << "E(X)it the application" << endl;
 		cout << "================================================================" << endl;
 		cout << "Enter a letter: ";
@@ -98,10 +111,12 @@ void main_header::mainmenu(){
 			}
 			case ('I'):{
 				inventory = import_file();
+				sort_id(inventory);
+				current = & inventory;
 				break;
 			}
 			case ('E'):{
-				export_file(inventory);
+				export_file(*current);
 				break;
 			}
 			case ('S'):{
@@ -112,16 +127,20 @@ void main_header::mainmenu(){
 				filter(inventory);
 				break;
 			}
+			case ('U'):{
+				current = &inventory;
+				break;
+			}
 			case ('P'):{
-				print_inv(inventory);
+				print_inv(*current);
 				break;
 			}
 			case ('O'):{
-				sort_list(inventory);
+				sort_list(*current);
 				break;
 			}
 			case ('W'):{
-				//setLevel(nullptr, nullptr);
+				setLevel(inventory);
 				break;
 			}
 			case ('C'):{

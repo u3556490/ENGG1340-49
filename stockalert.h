@@ -6,18 +6,18 @@
 // ----------------------------
 // function setOneLevel: sets warning level of commodity entry
 // specified to the value given.
-// @params Commodity com: the commodity to manipulate
+// @params Commodity &com: the commodity to manipulate
 //         int level: the level to set to
 // @return none
 // ----------------------------
-void setOneLevel(main_header::Commodity com, int level);
+void setOneLevel(main_header::Commodity &com, int level);
 
 // ----------------------------
 // function setLevel: gets call upon level change prompt.
-// @params vector<Commodity> list: the inventory to manipulate
+// @params vector<Commodity> &list: the inventory to manipulate
 // @return none
 // ----------------------------
-void setLevel(std::vector<main_header::Commodity> list);
+void setLevel(std::vector<main_header::Commodity> &list);
 
 // ----------------------------
 // function check_stock: loops through the whole inventory to find entries whose
