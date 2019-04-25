@@ -1,4 +1,5 @@
 #include "main.h"
+#include "search.h"
 #include "stockalert.h"
 #include <vector>
 #include <unordered_set>
@@ -17,49 +18,6 @@ void setOneLevel(Commodity &com, int level){
 	com.warning_level = level;
 }
 
-// ------------------------------
-// function comexist: a bruteforce linear search through the list,
-// to find an entry with the id specified. If found, returns true,
-// false otherwise. Thereby checks if the commodity with the associated
-// id exists in the list.
-// Assumptions: list is not sorted by id; id's are unique.
-// @params vector<Commodity> list: the inventory to look through
-// 		   string tag: the id to look for
-// @return bool: whether the desired entry is found.
-// ------------------------------
-bool comexist(vector<Commodity> list, string tag){
-	bool found = 0;
-	for (vector<Commodity>::iterator i = list.begin(); i!=list.end(); i++){
-		if ((*i).id == tag){
-			found = 1;
-			break;
-		}
-	}
-	return found;
-}
-
-// ------------------------------
-// function findcom: a bruteforce linear search through the list,
-// to find an entry with the id specified. If found, returns its position,
-// -1 otherwise.
-// Assumptions: list is not sorted by id; id's are unique.
-// @params vector<Commodity> list: the inventory to look through
-// 		   string tag: the id to look for
-// @return int: position of the commodity entry.
-// ------------------------------
-int findcom(vector<Commodity> list, string tag){
-	int pos = -1;
-	int index = 0;
-	for (vector<Commodity>::iterator i = list.begin(); i!=list.end(); i++){
-		if ((*i).id == tag){
-			pos = index;
-			break;
-		}
-		index++;
-	}
-	return pos;
-}
-
 // ----------------------------
 // function setLevel: gets call upon level change prompt.
 // @params vector<Commodity> &list: the inventory to manipulate
@@ -72,7 +30,7 @@ void setLevel(vector<Commodity> &list){
 	string buffer;
 	//user input
 	cout << "-------------------------------------------------------" << endl;
-	while (!ok){
+	while (!ok){	//input check
 		cout << "Please enter the id of the item to work on: ";
 		cin >> buffer;	//assuming no one is "smart" enough to use spaces in his id
 		if (!comexist(list, buffer)){
@@ -93,12 +51,11 @@ void setLevel(vector<Commodity> &list){
 	}
 	level = atoi(buffer.c_str());
 	//fetch item
-	int pos = findcom(list, target_id);
+	int pos = idfindcom(list, target_id);
 	//call set Level
 	setOneLevel(list[pos], level);
 	//return
 	cout << "Action successfully performed." << endl;
-	cout << "-------------------------------------------------------" << endl;
 }
 
 // ----------------------------

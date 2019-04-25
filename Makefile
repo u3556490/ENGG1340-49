@@ -14,13 +14,13 @@ search.o : search.cpp main.h
 sort.o : sort.cpp main.h
 	$(CC) $(CFLAGS1) -c $^ $(CFLAGS2)
 
-filter.o : filter.cpp main.h
+filter.o : filter.cpp main.h search.h
 	$(CC) $(CFLAGS1) -c $^ $(CFLAGS2)
 
 imexport.o : imexport.cpp main.h
 	$(CC) $(CFLAGS1) -c $^ $(CFLAGS2)
 
-stockalert.o : stockalert.cpp main.h
+stockalert.o : stockalert.cpp main.h search.h
 	$(CC) $(CFLAGS1) -c $^ $(CFLAGS2)
 
 update.o : update.cpp main.h

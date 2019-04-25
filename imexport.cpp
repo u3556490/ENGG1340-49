@@ -85,17 +85,20 @@ vector<Commodity> import_file(){
 // -----------------------------
 // function export_file: reads an address from the user and exports the
 // current inventory to that address.
-// @params vector<Commodity> list: the inventory to export
+// @params vector<Commodity>* list: the inventory to export
 // @return bool: whether the action is successful.
 // -----------------------------
-bool export_file(vector<Commodity> list){
+bool export_file(vector<Commodity>* list){
 	bool success = 0;
-	string address;
-	string line;
+	string address = "";
+	string line = "";
 	
-	cout << "Regarding the file's format: Each attribute are separated by semicolons and there will be no new line at the end of the file,";
-	cout << "which will be saved as a text file. The attributes come in order of id, name, manufacturer, unit price, expiry date (ddmmyyyy)";
-	cout << ", stock amount, stock warning level, shop id, shop stockpile amount. Each line is an entry in the inventory." << endl;
+	cout << "Regarding the file's format: Each attribute are separated by semicolons";
+	cout << " and there will be no new line at the end of the file,";
+	cout << "which will be saved as a text file. The attributes come in order of id, ";
+	cout << "name, manufacturer, unit price, expiry date (ddmmyyyy)";
+	cout << ", stock amount, stock warning level, shop id, shop stockpile amount. ";
+	cout << "Each line is an entry in the inventory." << endl;
 	cout << "-------------------------------------------------------------------" << endl;
 	cout << "Enter the name of the output file with file extension: ";
 	cin >> address;
@@ -110,17 +113,17 @@ bool export_file(vector<Commodity> list){
 	success = 1;
 	
 	//for each item
-	for (vector<Commodity>::iterator i = list.begin(); i != list.end(); i++){
+	for (vector<Commodity>::iterator i = list->begin(); i != list->end(); i++){
 		//unpack contents and write
 		Commodity com = *i;
 		ofs << com.id << ";" << com.name << ";" << com.manufacturer << ";" << com.price << ";" << com.expiry_date << ";" << com.stock_amount << ";";
 		ofs << com.warning_level << ";" << com.shop_id << ";" << com.shop_amount;
-		if ((i+1) != list.end())
+		if ((i+1) != list->end())
 			ofs << endl;
 	}
 	
 	ofs.close();
-	cout << "Export successful. " << list.size() << " entries written to file." << endl;
+	cout << "Export successful. " << list->size() << " entries written to file." << endl;
 	return success;
 }
 

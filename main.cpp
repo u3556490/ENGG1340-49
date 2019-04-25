@@ -18,7 +18,7 @@ using namespace main_header;
 // Because vectors are dynamic and allow good random access.
 vector<Commodity> inventory {};
 
-const int INIT_INVENTORY_SIZE = 50;
+const int INIT_INVENTORY_SIZE = 50;	//the capacity to initialize to.
 
 // -----------------------------------
 // Function init : Readies the inventory vector.
@@ -28,7 +28,6 @@ const int INIT_INVENTORY_SIZE = 50;
 void init(){
 	inventory.reserve(INIT_INVENTORY_SIZE);
 }
-
 
 // -----------------------------------
 // Function mainmenu : Prints a list of options 
@@ -47,16 +46,21 @@ void init(){
 // -----------------------------------
 void main_header::mainmenu(){
 	init();
-	vector<int> probs;
+	vector<int> probs;		//indices of commodities with issues
 	vector<Commodity> * current = &inventory;	//the current list to be shown. Depends on the filters
+	vector<Commodity> filtered;					//the filtered list here. Must not remove or current will dangle.
+	int filter_count = 0;
 	
 	bool quit = 0;
-	char option;
+	int option; 
+	string buffer;
 	while (!quit){
 		//status
-		probs = check_stock(& inventory);
+		probs = check_stock(&inventory);
+		int filtered_size = (filter_count > 0) ? (*current).size() : 0;
 		cout << "=================================================================" << endl;
 		cout << "The inventory is now of size: " << inventory.size() << "." << endl;
+		cout << "There are " << filter_count << " filters set, with " << (*current).size() << " items in the filtered list." << endl;
 		if (probs.size() < 1){																	//have problems?
 			cout << "There are no special warnings. ";
 		} else {																				//print names and ids of items
@@ -82,72 +86,83 @@ void main_header::mainmenu(){
 		cout << "Ready\n";
 		cout << "What do you want to do?" << endl;
 		//print option list
-		cout << "(A)dd new entry/entries"<< endl;
-		cout << "(R)emove obsolete entry/entries" << endl;
-		cout << "(I)mport and load inventory from file" << endl;
-		cout << "(E)xport and save current (with filters) inventory to file" << endl;
-		cout << "(S)earch for entries" << endl;
-		cout << "(F)ilter entries content" << endl;
-		cout << "(U)nset all filters' effect" << endl;
-		cout << "(P)rint current inventory (with filters) contents on screen" << endl;
-		cout << "S(O)rt current inventory (with filters) in order" << endl;
-		cout << "Set stockpile (W)arning level" << endl;
-		cout << "(C)heck stock status once more" << endl;
-		cout << "E(X)it the application" << endl;
+		cout << "1. Add new entry/entries"<< endl;
+		cout << "2. Remove obsolete entry/entries" << endl;
+		cout << "3. Import and load inventory from file" << endl;
+		cout << "4. Export and save current (with filters) inventory to file" << endl;
+		cout << "5. Search for entries" << endl;
+		cout << "6. Filter entries content" << endl;
+		cout << "7. Unset all filters' effect" << endl;
+		cout << "8. Print current inventory (with filters) contents on screen" << endl;
+		cout << "9. Sort current inventory (with filters) in order" << endl;
+		cout << "10. Set stockpile warning level" << endl;
+		cout << "11. Check stock status once more" << endl;
+		cout << "12. Exit the application" << endl;
 		cout << "================================================================" << endl;
-		cout << "Enter a letter: ";
-		//get option
-		cin >> option;
-		option = toupper(option);
+		bool input_ok = 0;
+		while (!input_ok){ //input check
+			cout << "Enter a number: ";
+			//get option
+			cin >> buffer;
+			option = atoi(buffer.c_str());
+			if ((option < 1) || (option > 12)){	//better option is to catch stoi exceptions but nvm
+				cout << "Please check your input and try again.\n";
+			} else {
+				input_ok = 1;
+			}
+		}
 		//check option
 		switch (option){
-			case ('A'): {
-				add(inventory);
+			case (1): {
+				add(inventory);	
 				break;
 			}
-			case ('R'):{
+			case (2):{
 				remove(inventory);
 				break;
 			}
-			case ('I'):{
-				inventory = import_file();
+			case (3):{
+				inventory = import_file();	//import: done
 				sort_id(inventory);
 				current = & inventory;
 				break;
 			}
-			case ('E'):{
-				export_file(*current);
+			case (4):{
+				export_file(current);	//export: done
 				break;
 			}
-			case ('S'):{
-				search(inventory);
+			case (5):{
+				search(inventory);	
 				break;
 			}
-			case ('F'):{
-				filter(inventory);
+			case (6):{
+				filtered = filter(*current, filter_count);	//must not be local!
+				current = &filtered;
+				//cout << (*current)[0].name << "\n";
 				break;
 			}
-			case ('U'):{
-				current = &inventory;
+			case (7):{
+				current = &inventory;	//reset filter
+				filter_count = 0;
 				break;
 			}
-			case ('P'):{
+			case (8):{
 				print_inv(*current);
 				break;
 			}
-			case ('O'):{
-				sort_list(*current);
+			case (9):{
+				sort_list(*current);	//sort: done
 				break;
 			}
-			case ('W'):{
-				setLevel(inventory);
+			case (10):{
+				setLevel(inventory);	//set level: done
 				break;
 			}
-			case ('C'):{
-				probs = check_stock(& inventory);
+			case (11):{
+				probs = check_stock(& inventory);	//check stock: done
 				break;
 			}
-			case ('X'):{
+			case (12):{	//quit
 				quit = 1;
 				break;
 			}

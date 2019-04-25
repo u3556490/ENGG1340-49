@@ -79,77 +79,86 @@ void sort_list(vector<Commodity> &original){
 	
 	bool sorted = 1;
 	//get which column to sort by
-	char col;
+	int col;
+	string buffer;
+	bool input_ok = 0;
 	cout << "-------------------------------------------------------------------" << endl;
 	cout << "Based on which attribute should the inventory be sorted?" << endl;
-	cout << "(I) for id" << endl;
-	cout << "(N) for name" << endl;
-	cout << "(M) for manufacturer" << endl;
-	cout << "(P) for price" << endl;
-	cout << "(X) for expiry date" << endl;
-	cout << "(A) for stock amount at warehouse" << endl;
-	cout << "(L) for stockpile warning level" << endl;
-	cout << "(W) for stockpile warning having ones first" << endl;
-	cout << "(O) for out of stock ones first" << endl;
-	cout << "(S) for shop id" << endl;
-	cout << "(U) for shop stockpile amount" << endl;
-	cout << "(R) for shop stockpile warning having ones first" << endl;
-	cout << "(T) for shop out of stock ones first" << endl;
+	cout << "1 for id" << endl;
+	cout << "2 for name" << endl;
+	cout << "3 for manufacturer" << endl;
+	cout << "4 for price" << endl;
+	cout << "5 for expiry date" << endl;
+	cout << "6 for stock amount at warehouse" << endl;
+	cout << "7 for stockpile warning level" << endl;
+	cout << "8 for stockpile warning having ones first" << endl;
+	cout << "9 for out of stock ones first" << endl;
+	cout << "10 for shop id" << endl;
+	cout << "11 for shop stockpile amount" << endl;
+	cout << "12 for shop stockpile warning having ones first" << endl;
+	cout << "13 for shop out of stock ones first" << endl;
 	cout << "-------------------------------------------------------------------" << endl;
-	cout << "Enter a letter: ";
-	cin >> col;
-	col = toupper(col);
+	while (!input_ok){	//user input checking
+		cout << "Please enter a number: ";
+		cin >> buffer;
+		col = atoi(buffer.c_str());
+		if ((col < 1) || (col > 13)){
+			cout << "Please check your input and try again.\n";
+		} else {
+			input_ok = 1;
+		}
+	}
 	//massive switch-case statement
 	switch (col){
-		case 'I':{
+		case 1:{
 			stable_sort(original.begin(), original.end(), id_comp);
 			break;
 		}
-		case 'N':{
+		case 2:{
 			stable_sort(original.begin(), original.end(), name_comp);
 			break;
 		}
-		case 'M':{
+		case 3:{
 			stable_sort(original.begin(), original.end(), manu_comp);
 			break;
 		}
-		case 'P':{
+		case 4:{
 			stable_sort(original.begin(), original.end(), price_comp);
 			break;
 		}
-		case 'X':{
+		case 5:{
 			stable_sort(original.begin(), original.end(), date_comp);
 			break;
 		}
-		case 'A':{
+		case 6:{
 			stable_sort(original.begin(), original.end(), stockamt_comp);
 			break;
 		}
-		case 'L':{
+		case 7:{
 			stable_sort(original.begin(), original.end(), level_comp);
 			break;
 		}
-		case 'W':{
+		case 8:{
 			stable_sort(original.begin(), original.end(), warning_comp);
 			break;
 		}
-		case 'O':{
+		case 9:{
 			stable_sort(original.begin(), original.end(), outofstock_comp);
 			break;
 		}
-		case 'S':{
+		case 10:{
 			stable_sort(original.begin(), original.end(), shopid_comp);
 			break;
 		}
-		case 'U':{
+		case 11:{
 			stable_sort(original.begin(), original.end(), shopamt_comp);
 			break;
 		}
-		case 'R':{
+		case 12:{
 			stable_sort(original.begin(), original.end(), swarning_comp);
 			break;
 		}
-		case 'T':{
+		case 13:{
 			stable_sort(original.begin(), original.end(), soutofstock_comp);
 			break;
 		}

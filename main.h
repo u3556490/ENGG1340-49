@@ -10,13 +10,13 @@ namespace main_header{
 // in the inventory table, i.e. a row.
 // ------------------------------
 struct Commodity{
-	std::string id;						//TODO: design id paradigm
+	std::string id;						
 	std::string name;
 	std::string manufacturer;
 	double price;
-	std::string expiry_date;			//TODO: design and handle dates
+	std::string expiry_date;			
 	int stock_amount;
-	int warning_level;					//TODO: is warning level global?
+	int warning_level;					
 	bool stock_warning;
 	bool out_of_stock;
 	std::string shop_id;
