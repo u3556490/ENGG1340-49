@@ -7,6 +7,7 @@
 #include <vector>
 #include <fstream>
 #include <string>
+#include <sstream>
 using namespace main_header;
 using namespace std;
 
@@ -195,7 +196,7 @@ void update(vector<Commodity> &list){
 // @return none
 // -----------------------------------
 // TODO: figure out the layout of the file to read
-void getUpdateFile(){
+void getUpdateFile(vector<Commodity> &list){
 	ifstream ifs;
 	string address;
 	
