@@ -16,7 +16,7 @@ int getInt(){
 	string * buffer = new string;
 	int value;
 	while(!input_ok){
-		cout << "Please enter the value you want to filter out: ";
+		cout << "Please enter a number: ";
 		std::getline(std::cin, *buffer);
 		try{	//wow c++ exception handling seems interesting
 			value = stoi(*buffer);
