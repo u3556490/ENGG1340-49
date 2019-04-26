@@ -13,25 +13,26 @@ string getString(){
 
 int getInt(){
 	bool input_ok = 0;
-	string buffer;
+	string * buffer = new string;
 	int value;
 	while(!input_ok){
 		cout << "Please enter the value you want to filter out: ";
-		std::getline(std::cin, buffer);
+		std::getline(std::cin, *buffer);
 		try{	//wow c++ exception handling seems interesting
-			value = stoi(buffer);
+			value = stoi(*buffer);
 		} catch (std::invalid_argument){
 			cout << "Please check your input and try again.\n";
 		}
 		input_ok = 1;
 	}
+	delete buffer;
 	return value;
 }
 
 bool getBool(){
 	bool input_ok = 0;
 	bool value;
-	string buffer;
+	string* buffer = new string;
 	while (!input_ok){
 		cout << "Please enter 1 for true (set) and 0 for false (not set): ";
 		cin >> buffer;
@@ -46,12 +47,13 @@ bool getBool(){
 		else
 			cout << "Please check your input and try again.\n";
 	}
+	delete buffer;
 	return value;
 }
 
 double getDouble(){
 	bool input_ok = 0;
-	string buffer;
+	string * buffer = new string;
 	double value;
 	while(!input_ok){
 		cout << "Please enter the value you want to filter out: ";
@@ -63,6 +65,7 @@ double getDouble(){
 		}
 		input_ok = 1;
 	}
+	delete string;
 	return value;
 }
 

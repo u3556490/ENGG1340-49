@@ -1,6 +1,7 @@
 #include "main.h"
 #include "addentry.h"
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <string>
 using namespace std;
