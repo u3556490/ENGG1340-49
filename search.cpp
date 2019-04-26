@@ -271,6 +271,8 @@ vector<int> search(vector<Commodity> list){
 	string buffer;
 	bool input_ok = 0;
 	int criterion = 0;
+	vector<Commodity> selected;
+	
 	cout >> "Which criteria are you going to use to search?" endl;
 	cout << "1. id\n2. name\n3. manufacturer\n";
 	cout << "4. price\n5. expiry date\n6. stock amount\n";
