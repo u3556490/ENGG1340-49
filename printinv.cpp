@@ -16,6 +16,7 @@ void print_inv(vector<Commodity> list){
 	string buffer;
 	bool input_ok = 0;
 	int criterion = 0;
+	int index;
 	vector<Commodity>::iterator position = list.begin();
 	while (not exit){
 		cout << "Commodity id: " << (*position).id << endl;
@@ -32,37 +33,42 @@ void print_inv(vector<Commodity> list){
 		cout << "Commodity shop stock warning: " << (*position).shop_stock_warning << endl;
 		cout << "Commodity shop out of stock: " << (*position).shop_out_of_stock << endl;
 		cout << "------------------------------------------------------\n";
-		cout << "What action would you like to take?\n1. go to next item\n2. jump to an item\n3. return to the menu" << endl;
+		cout << "What action would you like to take?\n";
+		cout << "1. go to next item\n";
+		cout << "2. jump to an item\n";
+		cout << "3. return to the menu\n";
 	
-	while (!input_ok){
-		cout << "Please enter a number: ";
-		cin >> buffer;
-		criterion = atoi(buffer.c_str());
-		if ((criterion < 1) || (criterion > 3)){
-			cout << "Please check your input and try again." << endl;
-		} else {
-			input_ok = 1;
+		while (!input_ok){
+			cout << "Please enter a number: ";
+			cin >> buffer;
+			criterion = atoi(buffer.c_str());
+			if ((criterion < 1) || (criterion > 3)){
+				cout << "Please check your input and try again." << endl;
+			} else {
+				input_ok = 1;
+			}
 		}
-	}
 	
-	switch(criterion){
-		case 1: {
-			position++;
-			if (position == list.end()) exit = true; //we are at the end of list 
+		switch(criterion){
+			case 1: {
+				position++;
+				if (position == list.end()) 
+					exit = true; 
+					break;
+			}
+			case 2: {
+				cin >> index;
+				if ((index < 0 ) || (index >= (list.size()))
+					position = list.begin() + index;
 				break;
-		}
-		case 2: {
-			cin >> index
-			if ((index < 0 ) || (index >= (list.size()))
-				position = list.begin() + index;
-			break;
-		}
-		case 3: {
-			return exit = true; 
-			break; 
-		}
-		else{
-			cout << "There is an error in your input" << endl;
+			}
+			case 3: {
+				exit = true; 
+				break; 
+			}
+			default{
+				cout << "There is an error in your input" << endl;
+			}
 		}
 	}
 }
