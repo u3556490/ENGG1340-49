@@ -49,14 +49,14 @@ void main_header::mainmenu(){
 	vector<int> probs;		//indices of commodities with issues
 	vector<Commodity> * current = &inventory;	//the current list to be shown. Depends on the filters
 	vector<Commodity> filtered;					//the filtered list here. Must not remove or current will dangle.
-	int filter_count = 0;
+	int filter_count = 0;	//no. of filters set
 	
-	bool quit = 0;
-	int option; 
-	string buffer;
+	bool quit = 0;	//exiting the application?
+	int option; 	//user option id
+	string buffer;	//input vuffer
 	while (!quit){
 		//status
-		probs = check_stock(&inventory);
+		probs = check_stock(&inventory);		//auto stock check
 		int filtered_size = (filter_count > 0) ? (*current).size() : 0;
 		cout << "=================================================================" << endl;
 		cout << "The inventory is now of size: " << inventory.size() << "." << endl;
@@ -113,30 +113,30 @@ void main_header::mainmenu(){
 		}
 		//check option
 		switch (option){
-			case (1): {
+			case (1): {	//add
 				add(inventory);	
 				break;
 			}
-			case (2):{
+			case (2):{	//remove
 				remove(inventory);
 				break;
 			}
 			case (3):{
-				inventory = import_file();	//import: done
+				inventory = import_file();	//import
 				sort_id(inventory);
 				current = & inventory;
 				break;
 			}
 			case (4):{
-				export_file(current);	//export: done
+				export_file(current);	//export
 				break;
 			}
-			case (5):{
+			case (5):{	//search
 				filtered = search(*current);
 				current = &filtered;	
 				break;
 			}
-			case (6):{
+			case (6):{	//filter
 				filtered = filter(*current, filter_count);	//must not be local!
 				current = &filtered;
 				//cout << (*current)[0].name << "\n";
@@ -148,26 +148,26 @@ void main_header::mainmenu(){
 				break;
 			}
 			case (8):{
-				print_inv(*current);
+				print_inv(*current);	//print stuff
 				break;
 			}
 			case (9):{
-				sort_list(*current);	//sort: done
+				sort_list(*current);	//sort
 				break;
 			}
 			case (10):{
-				setLevel(inventory);	//set level: done
+				setLevel(inventory);	//set level
 				break;
 			}
 			case (11):{
-				probs = check_stock(& inventory);	//check stock: done
+				probs = check_stock(& inventory);	//check stock
 				break;
 			}
 			case (12):{	//quit
 				quit = 1;
 				break;
 			}
-			default: cout << "Please check your input and try again." << endl;
+			default: cout << "Please check your input and try again." << endl;	//wrong input
 		}
 	}
 }

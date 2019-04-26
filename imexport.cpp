@@ -17,11 +17,12 @@ const int INIT_INVENTORY_SIZE = 50;
 // @return vector<Commodity>: the inventory obtained
 // -----------------------------
 vector<Commodity> import_file(){
-	vector<Commodity> list;
+	vector<Commodity> list = {};				//a temporary list of commodities to save things into
 	list.reserve(INIT_INVENTORY_SIZE);
-	string address;
-	string line;
+	string address;		//address of input file
+	string line;		//buffer
 	
+	//user warning and get address
 	cout << "Regarding the file's format: Attributes are separated by semicolons and one leaves no new line at the end of the file,";
 	cout << "which is to be saved as a text file. The attributes come in order of id, name, manufacturer, unit price, expiry date (ddmmyyyy)";
 	cout << ", stock amount, stock warning level, shop id, shop stockpile amount. Each line is an entry in the inventory." << endl;
@@ -29,11 +30,12 @@ vector<Commodity> import_file(){
 	cout << "Enter the address of the inventory file with file extension: ";
 	cin >> address;
 	
+	//open file
 	ifstream ifs;
 	ifs.open(address.c_str());
-	if (ifs.fail()){
+	if (ifs.fail()){	//error
 		cout << "Error occured opening the file." << endl;
-		return list;
+		return list;	//return nothing
 	}
 	
 	//take inputs from file
@@ -61,16 +63,16 @@ vector<Commodity> import_file(){
 		com.shop_id = token;			//shop id
 		getline(ss,token,';');
 		com.shop_amount = atoi(token.c_str()); //shop amt
-		com.out_of_stock = 0;
+		com.out_of_stock = 0;	//set to false. will be updated upon stock checks which are automatically run
 		com.shop_out_of_stock = 0;
 		com.shop_stock_warning = 0;
 		com.stock_warning = 0;
 		
-		list.push_back(com);
+		list.push_back(com);	//add to list
 		
 	}
 	
-	ifs.close();
+	ifs.close();	//close file
 	
 	/*/debug use
 	for (vector<Commodity>::iterator i = list.begin(); i != list.end(); i++){
@@ -79,7 +81,7 @@ vector<Commodity> import_file(){
 	}*/
 	
 	cout << "Import successful. " << list.size() << " entries retrieved from file." << endl;
-	return list;
+	return list;	//return list.
 }
 
 // -----------------------------
@@ -89,10 +91,10 @@ vector<Commodity> import_file(){
 // @return bool: whether the action is successful.
 // -----------------------------
 bool export_file(vector<Commodity>* list){
-	bool success = 0;
-	string address = "";
-	string line = "";
+	bool success = 0;		//action successful?
+	string address = "";	//address
 	
+	//warning and get address
 	cout << "Regarding the file's format: Each attribute are separated by semicolons";
 	cout << " and there will be no new line at the end of the file,";
 	cout << "which will be saved as a text file. The attributes come in order of id, ";
@@ -103,6 +105,7 @@ bool export_file(vector<Commodity>* list){
 	cout << "Enter the name of the output file with file extension: ";
 	cin >> address;
 	
+	//open file
 	ofstream ofs;
 	ofs.open(address.c_str());
 	if (ofs.fail()){	//handle error
@@ -110,7 +113,7 @@ bool export_file(vector<Commodity>* list){
 		cout << "Error occured writing to file." << endl;
 		return success;
 	}
-	success = 1;
+	success = 1;	//will work ga la
 	
 	//for each item
 	for (vector<Commodity>::iterator i = list->begin(); i != list->end(); i++){
@@ -118,13 +121,13 @@ bool export_file(vector<Commodity>* list){
 		Commodity com = *i;
 		ofs << com.id << ";" << com.name << ";" << com.manufacturer << ";" << com.price << ";" << com.expiry_date << ";" << com.stock_amount << ";";
 		ofs << com.warning_level << ";" << com.shop_id << ";" << com.shop_amount;
-		if ((i+1) != list->end())
+		if ((i+1) != list->end())	//no end of line characters for the last entry
 			ofs << endl;
 	}
 	
-	ofs.close();
+	ofs.close();	//close file
 	cout << "Export successful. " << list->size() << " entries written to file." << endl;
-	return success;
+	return success;	//return
 }
 
 /*

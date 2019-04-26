@@ -13,55 +13,55 @@ using namespace main_header;
 
 // additional functions necessary
 // Comparators
-bool id_comp(Commodity c1, Commodity c2){
+bool id_comp(Commodity c1, Commodity c2){	//id
 	return (c1.id) < (c2.id);
 }
 
-bool name_comp(Commodity c1, Commodity c2){
+bool name_comp(Commodity c1, Commodity c2){	//name
 	return (c1.name) < (c2.name);
 }
 
-bool manu_comp(Commodity c1, Commodity c2){
+bool manu_comp(Commodity c1, Commodity c2){	//manufacturer
 	return (c1.manufacturer) < (c2.manufacturer);
 }
 
-bool price_comp(Commodity c1, Commodity c2){
+bool price_comp(Commodity c1, Commodity c2){	//price
 	return (c1.price) < (c2.price);
 }
 
-bool date_comp(Commodity c1, Commodity c2){
+bool date_comp(Commodity c1, Commodity c2){	//expiry date
 	return (c1.expiry_date) < (c2.expiry_date);
 }
 
-bool stockamt_comp(Commodity c1, Commodity c2){
+bool stockamt_comp(Commodity c1, Commodity c2){		//stock amount
 	return (c1.stock_amount) < (c2.stock_amount);
 }
 
-bool level_comp(Commodity c1, Commodity c2){
+bool level_comp(Commodity c1, Commodity c2){	//warning level
 	return (c1.warning_level) < (c2.warning_level);
 }
 
-bool warning_comp(Commodity c1, Commodity c2){
+bool warning_comp(Commodity c1, Commodity c2){	//if there are warnings
 	return (c1.stock_warning);
 }
 
-bool outofstock_comp(Commodity c1, Commodity c2){
+bool outofstock_comp(Commodity c1, Commodity c2){	//out of stock
 	return (c1.out_of_stock);
 }
 
-bool shopid_comp(Commodity c1, Commodity c2){
+bool shopid_comp(Commodity c1, Commodity c2){	//shop id
 	return (c1.shop_id) < (c2.shop_id);	
 }
 
-bool shopamt_comp(Commodity c1, Commodity c2){
+bool shopamt_comp(Commodity c1, Commodity c2){	//shop amomunt
 	return (c1.shop_amount) < (c2.shop_amount);
 }
 
-bool swarning_comp(Commodity c1, Commodity c2){
+bool swarning_comp(Commodity c1, Commodity c2){	//shop stock warning
 	return (c1.shop_stock_warning);
 }
 
-bool soutofstock_comp(Commodity c1, Commodity c2){
+bool soutofstock_comp(Commodity c1, Commodity c2){	//shop out of stock
 	return (c1.shop_out_of_stock);
 }
 
@@ -72,16 +72,16 @@ bool soutofstock_comp(Commodity c1, Commodity c2){
 // @return none
 // --------------------------------------
 void sort_list(vector<Commodity> &original){
-	if (original.size() < 2){
+	if (original.size() < 2){	//save some work
 		cout << "The inventory is too small to sort meaningfully.\n";
 		return;
 	}
 	
 	bool sorted = 1;
 	//get which column to sort by
-	int col;
-	string buffer;
-	bool input_ok = 0;
+	int col;	//sorting criterion = the column in the table.
+	string buffer;	//input buffer
+	bool input_ok = 0;	//for input checks
 	cout << "-------------------------------------------------------------------" << endl;
 	cout << "Based on which attribute should the inventory be sorted?" << endl;
 	cout << "1 for id" << endl;
@@ -101,9 +101,10 @@ void sort_list(vector<Commodity> &original){
 	while (!input_ok){	//user input checking
 		cout << "Please enter a number: ";
 		cin >> buffer;
-		col = atoi(buffer.c_str());
+		col = atoi(buffer.c_str());	//check in range [1,13]
 		if ((col < 1) || (col > 13)){
 			cout << "Please check your input and try again.\n";
+			sorted = 0;
 		} else {
 			input_ok = 1;
 		}
@@ -162,13 +163,8 @@ void sort_list(vector<Commodity> &original){
 			stable_sort(original.begin(), original.end(), soutofstock_comp);
 			break;
 		}
-		default: {
-			cout << "Please check your input and try again.";
-			sorted = 0;
-			break;
-		}
 	}
-	if (sorted)
+	if (sorted)	//message
 		cout << "Sorting successfully completed." << endl;
 	else
 		cout << "No sorting has been performed." << endl;

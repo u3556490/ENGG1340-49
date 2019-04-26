@@ -21,6 +21,7 @@
 // Take input on what to filer and whether the filter is to be unset.
 // Must not overwrite the original inventory.
 // @params vector<Commodity> original: original list of items.
+//         int &count: the number of filters set. this comes in by reference.
 // @return vector<Commodity>: vector of entries of the matches to display.
 // --------------------------------------
 std::vector<main_header::Commodity> filter(std::vector<main_header::Commodity> original, int &count);

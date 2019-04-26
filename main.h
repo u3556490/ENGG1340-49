@@ -10,11 +10,11 @@ namespace main_header{
 // in the inventory table, i.e. a row.
 // ------------------------------
 struct Commodity{
-	std::string id;						
+	std::string id;			//supposed to be unique			
 	std::string name;
 	std::string manufacturer;
 	double price;
-	std::string expiry_date;			
+	std::string expiry_date;	//all 0's when unapplicable		
 	int stock_amount;
 	int warning_level;					
 	bool stock_warning;
