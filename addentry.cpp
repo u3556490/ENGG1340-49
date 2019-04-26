@@ -1,5 +1,6 @@
 #include "main.h"
 #include "addentry.h"
+#include "inpututil.h"
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -14,8 +15,7 @@ using namespace main_header;
 // @return none
 // -----------------------------------
 void add_one(vector<Commodity> &list, Commodity item){
-	string name, manufacturer, unit_price, expiry_date;
-	cin >> name >> manufacturer >> unit_price >> expiry_date;
+	list.push_back(item);
 }
 // -----------------------------------
 // Function add: adds new commodities to the list. Will be called
@@ -25,7 +25,17 @@ void add_one(vector<Commodity> &list, Commodity item){
 // @return none
 // -----------------------------------
 void add(vector<Commodity> &list){
-	
+	cout << "How would you like to add the commodity?\n1. one-by-one manually\n2. through file\n";
+	char input;
+	cin >> input;
+	if (input == "1"){
+		Commodity com = getCommodityData();
+		add_one(<Commodity> &list, Commodity com);
+	}
+	else if (input == "2"){
+		Commodity com = getCommodityFile();
+		add_one(<Commodity> &list, Commodity com);
+	}
 }
 
 // -----------------------------------
@@ -41,16 +51,35 @@ void add(vector<Commodity> &list){
 // 4. Shove the stuff into a new Commodity instance
 // -----------------------------------
 Commodity getCommodityData(){
-	bool success = 0;
 	
-	ofstream ofs;
-	ofs.open(address.c_str());
-	if (ofs.fail()){	//handle error
-		success = 0;
-		cout << "Error occured writing to file." << endl;
-		return success;
-	}
-	success = 1;
+	Commodity com;
+	
+	string id, name, manufacturer, shop_id, expiry_date;
+	double price; 
+	int shop_amount, stock_amount, warning_level;
+
+	cout << "Please enter the id below.\n";
+	com.id = getString();
+	cout << "Please enter the name below.\n";
+	com.name = getString();
+	cout << "Please enter the manufacturer below.\n";
+	com.manufacturer = getString();
+	cout << "Please enter the price below.\n";
+	com.price = getDouble();
+	cout << "Please enter the expiry date below.\n";
+	com.expiry_date = getString();
+	cout << "Please enter the stock amount below.\n";
+	com.stock_amount = getInt();
+	cout << "Please enter the warning level below.\n";
+	com.warning_level = getInt();
+	cout << "Please enter the shop id below.\n";
+	com.shop_id = getString();
+	cout << "Please enter the shop amount below.\n";
+	com.shop_amount = getInt();
+	
+	return com;
+	
+	
 }
 
 // -----------------------------------
@@ -73,6 +102,36 @@ Commodity getCommodityFile(){
 		cout << "Error occured opening the file." << endl;
 		return list;
 	}
+	getline(ifs, line);		   
+	stringstream ss (line);
+	string token;
+	getline(ss, token, ';');
+	Commodity com;
+	com.id = token;				
+	getline(ss,token,';');
+	com.name = token;			
+	getline(ss,token,';');
+	com.manufacturer = token;
+	getline(ss,token,';');
+	com.price = atof(token.c_str());	
+	getline(ss,token,';');
+	com.expiry_date = token;	
+	getline(ss,token,';');
+	com.stock_amount = atoi(token.c_str()); 
+	getline(ss,token,';');
+	com.warning_level = atoi(token.c_str()); 
+	getline(ss,token,';');
+	com.shop_id = token;			
+	getline(ss,token,';');
+	com.shop_amount = atoi(token.c_str()); 
+	com.out_of_stock = 0;
+	com.shop_out_of_stock = 0;
+	com.shop_stock_warning = 0;
+	com.stock_warning = 0;
+		
+	
+	ifs.close();
+	return com;
 }
 
 /*debug only

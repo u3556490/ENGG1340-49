@@ -293,7 +293,7 @@ vector<int> search(vector<Commodity> list){
 	switch(criterion){
 		case 1: {
 			string value = getString();
-			int result = idfindcom(*current, value);	//there exists only one match
+			int result = idfindcom(*current, value);	
 			if (result == -1){
 				cout << "Searching unsuccessful: id " << value << " not found.\n";
 			} else {
@@ -312,7 +312,7 @@ vector<int> search(vector<Commodity> list){
 			} else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
-					selected.push_back((*current)[(*i)]);	//god damn this pointer syntax!
+					selected.push_back((*current)[(*i)]);	
 				}
 				cout << "Search successfully set. The first item in the selected list is: \n";		
 				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
@@ -327,7 +327,7 @@ vector<int> search(vector<Commodity> list){
 			} else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
-				selected.push_back((*current)[(*i)]);	//god damn this pointer syntax!
+				selected.push_back((*current)[(*i)]);	
 				}
 				cout << "Search successfully set. The first item in the selected list is: \n";
 				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
@@ -342,7 +342,7 @@ vector<int> search(vector<Commodity> list){
 			} else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
-					selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
+					selected.push_back((*current)[(*i)]);	
 				}
 				cout << "Search successfully set. The first item in the selected list is: \n";
 				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
@@ -357,7 +357,7 @@ vector<int> search(vector<Commodity> list){
 			} else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
-					selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
+					selected.push_back((*current)[(*i)]);	
 				}
 				cout << "Search successfully set. The first item in the selected list is: \n";
 				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
@@ -374,7 +374,7 @@ vector<int> search(vector<Commodity> list){
 			} else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
-					selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
+					selected.push_back((*current)[(*i)]);	
 				}
 				cout << "Search successfully set. The first item in the selected list is: \n";
 				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
@@ -389,7 +389,7 @@ vector<int> search(vector<Commodity> list){
 			} else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
-					selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
+					selected.push_back((*current)[(*i)]);	
 				}
 				cout << "Search successfully set. The first item in the selected list is: \n";
 				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
@@ -404,7 +404,7 @@ vector<int> search(vector<Commodity> list){
 			} else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
-					selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
+					selected.push_back((*current)[(*i)]);	
 				}
 				cout << "Search successfully set. The first item in the selected list is: \n";
 				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
@@ -419,7 +419,7 @@ vector<int> search(vector<Commodity> list){
 			} else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
-					selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
+					selected.push_back((*current)[(*i)]);	
 				}
 				cout << "Search successfully set. The first item in the selected list is: \n";
 				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
@@ -434,7 +434,7 @@ vector<int> search(vector<Commodity> list){
 			} else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
-					selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
+					selected.push_back((*current)[(*i)]);	
 				}
 				cout << "Search successfully set. The first item in the selected list is: \n";
 				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
@@ -449,7 +449,7 @@ vector<int> search(vector<Commodity> list){
 			} else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
-					selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
+					selected.push_back((*current)[(*i)]);	
 					}
 				cout << "Search successfully set. The first item in the selected list is: \n";
 				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
@@ -464,7 +464,7 @@ vector<int> search(vector<Commodity> list){
 			} else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
-					selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
+					selected.push_back((*current)[(*i)]);	
 				}
 				cout << "Search successfully set. The first item in the selected list is: \n";
 				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
@@ -479,7 +479,7 @@ vector<int> search(vector<Commodity> list){
 			} else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
-					selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
+					selected.push_back((*current)[(*i)]);	
 				}
 				cout << "Search successfully set. The first item in the selected list is: \n";
 				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
