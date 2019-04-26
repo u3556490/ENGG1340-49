@@ -274,10 +274,19 @@ vector<Commodity> search(vector<Commodity> list){
 	vector<Commodity> selected;
 	
 	cout << "Which criteria are you going to use to search?" << endl;
-	cout << "1. id\n2. name\n3. manufacturer\n";
-	cout << "4. price\n5. expiry date\n6. stock amount\n";
-	cout << "7. warning level\n8. stock warning\n9. out of stock\n";
-	cout << "10. shop id\n11. shop stock amount\n12. shop stock warning\n13. shop out of stock\n";
+	cout << "1. id\n";
+	cout << "2. name\n";
+	cout << "3. manufacturer\n";
+	cout << "4. price\n";
+	cout << "5. expiry date\n";
+	cout << "6. stock amount\n";
+	cout << "7. warning level\n";
+	cout << "8. stock warning\n";
+	cout << "9. out of stock\n";
+	cout << "10. shop id\n";
+	cout << "11. shop stock amount\n";
+	cout << "12. shop stock warning\n";
+	cout << "13. shop out of stock\n";
 	cout << "--------------------------------------------------------\n";
 	while (!input_ok){
 		cout << "Please enter a number: ";
