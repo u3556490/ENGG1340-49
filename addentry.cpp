@@ -3,6 +3,7 @@
 #include "inpututil.h"
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <vector>
 #include <string>
 using namespace std;
@@ -28,13 +29,13 @@ void add(vector<Commodity> &list){
 	cout << "How would you like to add the commodity?\n1. one-by-one manually\n2. through file\n";
 	char input;
 	cin >> input;
-	if (input == "1"){
+	if (input == '1'){
 		Commodity com = getCommodityData();
-		add_one(<Commodity> &list, Commodity com);
+		add_one(list, com);
 	}
-	else if (input == "2"){
+	else if (input == '2'){
 		Commodity com = getCommodityFile();
-		add_one(<Commodity> &list, Commodity com);
+		add_one(list, com);
 	}
 }
 
@@ -53,10 +54,6 @@ void add(vector<Commodity> &list){
 Commodity getCommodityData(){
 	
 	Commodity com;
-	
-	string id, name, manufacturer, shop_id, expiry_date;
-	double price; 
-	int shop_amount, stock_amount, warning_level;
 
 	cout << "Please enter the id below.\n";
 	com.id = getString();
@@ -97,16 +94,21 @@ Commodity getCommodityData(){
 // -----------------------------------
 Commodity getCommodityFile(){
 	ifstream ifs;
+	Commodity com;
+	//???? Address ?????
+	string address;
+	//??????
 	ifs.open(address.c_str());
 	if (ifs.fail()){
 		cout << "Error occured opening the file." << endl;
-		return list;
+		return com;
 	}
+	string line;
+	
 	getline(ifs, line);		   
 	stringstream ss (line);
 	string token;
 	getline(ss, token, ';');
-	Commodity com;
 	com.id = token;				
 	getline(ss,token,';');
 	com.name = token;			
@@ -128,7 +130,6 @@ Commodity getCommodityFile(){
 	com.shop_out_of_stock = 0;
 	com.shop_stock_warning = 0;
 	com.stock_warning = 0;
-		
 	
 	ifs.close();
 	return com;

@@ -265,15 +265,15 @@ vector<int> shopout_search(vector<Commodity> list, bool tag){
 // The results should be returned as a vector containing
 // the indices of the matched items.
 // @params vector<Commodity> list: the list to search in.
-// @return vector<int>: the indices of the matches.
+// @return vector<Commodity>: the matches.
 // -------------------------------
-vector<int> search(vector<Commodity> list){
+vector<Commodity> search(vector<Commodity> list){
 	string buffer;
 	bool input_ok = 0;
 	int criterion = 0;
 	vector<Commodity> selected;
 	
-	cout >> "Which criteria are you going to use to search?" endl;
+	cout << "Which criteria are you going to use to search?" << endl;
 	cout << "1. id\n2. name\n3. manufacturer\n";
 	cout << "4. price\n5. expiry date\n6. stock amount\n";
 	cout << "7. warning level\n8. stock warning\n9. out of stock\n";
@@ -293,12 +293,12 @@ vector<int> search(vector<Commodity> list){
 	switch(criterion){
 		case 1: {
 			string value = getString();
-			int result = idfindcom(*current, value);	
+			int result = idfindcom(list, value);	
 			if (result == -1){
 				cout << "Searching unsuccessful: id " << value << " not found.\n";
 			} else {
 				selected.clear();
-				selected.push_back((*current)[result]);
+				selected.push_back((list)[result]);
 				cout << "Search successfully set. \n";
 				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". \n";
 			}
@@ -306,13 +306,13 @@ vector<int> search(vector<Commodity> list){
 		}
 		case 2: {
 			string value = getString();
-			vector<int> result = name_search(*current, value);	
+			vector<int> result = name_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: name " << value << " not found.\n";
 			} else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
-					selected.push_back((*current)[(*i)]);	
+					selected.push_back((list)[(*i)]);	
 				}
 				cout << "Search successfully set. The first item in the selected list is: \n";		
 				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
@@ -321,13 +321,13 @@ vector<int> search(vector<Commodity> list){
 		}
 		case 3: {
 			string value = getString();
-			vector<int> result = manu_search(*current, value);	
+			vector<int> result = manu_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: manufacturer " << value << " not found.\n";
 			} else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
-				selected.push_back((*current)[(*i)]);	
+				selected.push_back((list)[(*i)]);	
 				}
 				cout << "Search successfully set. The first item in the selected list is: \n";
 				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
@@ -336,13 +336,13 @@ vector<int> search(vector<Commodity> list){
 		}
 		case 4: {
 			double value = getDouble();
-			vector<int> result = price_search(*current, value);	
+			vector<int> result = price_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
 			} else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
-					selected.push_back((*current)[(*i)]);	
+					selected.push_back((list)[(*i)]);	
 				}
 				cout << "Search successfully set. The first item in the selected list is: \n";
 				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
@@ -351,30 +351,28 @@ vector<int> search(vector<Commodity> list){
 		}
 		case 5: {
 			string value = getString();
-			vector<int> result = date_search(*current, value);	
+			vector<int> result = date_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
 			} else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
-					selected.push_back((*current)[(*i)]);	
+					selected.push_back((list)[(*i)]);	
 				}
 				cout << "Search successfully set. The first item in the selected list is: \n";
 				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
-				filter_count++;
-				current = & selected;
 			}
 			break;
 		}
 		case 6: {
 			int value = getInt();
-			vector<int> result = stockamt_search(*current, value);	
+			vector<int> result = stockamt_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
 			} else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
-					selected.push_back((*current)[(*i)]);	
+					selected.push_back((list)[(*i)]);	
 				}
 				cout << "Search successfully set. The first item in the selected list is: \n";
 				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
@@ -383,13 +381,13 @@ vector<int> search(vector<Commodity> list){
 		}
 		case 7: {
 			int value = getInt();
-			vector<int> result = level_search(*current, value);	
+			vector<int> result = level_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
 			} else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
-					selected.push_back((*current)[(*i)]);	
+					selected.push_back((list)[(*i)]);	
 				}
 				cout << "Search successfully set. The first item in the selected list is: \n";
 				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
@@ -398,13 +396,13 @@ vector<int> search(vector<Commodity> list){
 		}	
 		case 8: {
 			bool value = getBool();
-			vector<int> result = stockwarn_search(*current, value);	
+			vector<int> result = stockwarn_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
 			} else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
-					selected.push_back((*current)[(*i)]);	
+					selected.push_back((list)[(*i)]);	
 				}
 				cout << "Search successfully set. The first item in the selected list is: \n";
 				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
@@ -413,13 +411,13 @@ vector<int> search(vector<Commodity> list){
 		}
 		case 9: {
 			bool value = getBool();
-			vector<int> result = stockout_search(*current, value);	
+			vector<int> result = stockout_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
 			} else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
-					selected.push_back((*current)[(*i)]);	
+					selected.push_back((list)[(*i)]);	
 				}
 				cout << "Search successfully set. The first item in the selected list is: \n";
 				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
@@ -428,13 +426,13 @@ vector<int> search(vector<Commodity> list){
 		}
 		case 10: {
 			string value = getString();
-			vector<int> result = shopid_search(*current, value);	
+			vector<int> result = shopid_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
 			} else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
-					selected.push_back((*current)[(*i)]);	
+					selected.push_back((list)[(*i)]);	
 				}
 				cout << "Search successfully set. The first item in the selected list is: \n";
 				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
@@ -443,13 +441,13 @@ vector<int> search(vector<Commodity> list){
 		}
 		case 11: {
 			int value = getInt();
-			vector<int> result = shopamt_search(*current, value);	
+			vector<int> result = shopamt_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
 			} else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
-					selected.push_back((*current)[(*i)]);	
+					selected.push_back((list)[(*i)]);	
 					}
 				cout << "Search successfully set. The first item in the selected list is: \n";
 				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
@@ -458,13 +456,13 @@ vector<int> search(vector<Commodity> list){
 		}
 		case 12: {
 			bool value = getBool();
-			vector<int> result = shopwarn_search(*current, value);	
+			vector<int> result = shopwarn_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
 			} else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
-					selected.push_back((*current)[(*i)]);	
+					selected.push_back((list)[(*i)]);	
 				}
 				cout << "Search successfully set. The first item in the selected list is: \n";
 				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
@@ -473,13 +471,13 @@ vector<int> search(vector<Commodity> list){
 		}
 		case 13: {
 			bool value = getBool();
-			vector<int> result = shopout_search(*current, value);	
+			vector<int> result = shopout_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
 			} else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
-					selected.push_back((*current)[(*i)]);	
+					selected.push_back((list)[(*i)]);	
 				}
 				cout << "Search successfully set. The first item in the selected list is: \n";
 				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";

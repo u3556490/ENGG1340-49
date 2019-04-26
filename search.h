@@ -65,8 +65,8 @@ std::vector<int> shopout_search(std::vector<main_header::Commodity> list, bool t
 // The results should be returned as a vector containing
 // the indices of the matched items.
 // @params vector<Commodity> list: the list to search in.
-// @return vector<int>: the indices of the matches.
+// @return vector<Commodity>: the matches.
 // -------------------------------
-std::vector<int> search(std::vector<main_header::Commodity> list);
+std::vector<main_header::Commodity> search(std::vector<main_header::Commodity> list);
 
 #endif /* SEARCH */

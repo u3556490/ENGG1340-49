@@ -11,7 +11,7 @@ using namespace main_header;
 // @return none
 // ---------------------------------
 void print_inv(vector<Commodity> list){
-	cout << <Commodity> list << endl;
+
 }
 
 /*

@@ -92,7 +92,7 @@ void main_header::mainmenu(){
 		cout << "4. Export and save current (with filters) inventory to file" << endl;
 		cout << "5. Search for entries" << endl;
 		cout << "6. Filter entries content" << endl;
-		cout << "7. Unset all filters' effect" << endl;
+		cout << "7. Unset all filters and searches effect" << endl;
 		cout << "8. Print current inventory (with filters) contents on screen" << endl;
 		cout << "9. Sort current inventory (with filters) in order" << endl;
 		cout << "10. Set stockpile warning level" << endl;
@@ -132,7 +132,8 @@ void main_header::mainmenu(){
 				break;
 			}
 			case (5):{
-				search(inventory);	
+				filtered = search(*current);
+				current = &filtered;	
 				break;
 			}
 			case (6):{
