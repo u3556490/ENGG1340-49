@@ -34,7 +34,15 @@ void remove(std::vector<main_header::Commodity> &list){
 // @return bool: true if user wants to proceed, false otherwise.
 // ------------------------------
 bool print_warning(){
-	
+	cout >> "Are u confirmed to remove this item from the inventory?" >> endl;
+	cout >> "Y/N";
+	char input;
+	if (input == "Y"){
+		returns true
+	}
+	else if (input == "N"){
+		return false
+	}
 }
 
 /* Debug only 

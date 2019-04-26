@@ -13,9 +13,9 @@ using namespace main_header;
 // @return none
 // -----------------------------------
 void add_one(vector<Commodity> &list, Commodity item){
-	
+	string name, manufacturer, unit_price, expiry_date;
+	cin >> name >> manufacturer >> unit_price >> expiry_date;
 }
-
 // -----------------------------------
 // Function add: adds new commodities to the list. Will be called
 // immediately when the user wants to add stuff, so direct him to
@@ -40,7 +40,16 @@ void add(vector<Commodity> &list){
 // 4. Shove the stuff into a new Commodity instance
 // -----------------------------------
 Commodity getCommodityData(){
+	bool success = 0;
 	
+	ofstream ofs;
+	ofs.open(address.c_str());
+	if (ofs.fail()){	//handle error
+		success = 0;
+		cout << "Error occured writing to file." << endl;
+		return success;
+	}
+	success = 1;
 }
 
 // -----------------------------------
@@ -57,7 +66,12 @@ Commodity getCommodityData(){
 // 4. Shove the stuff into a new Commodity instance
 // -----------------------------------
 Commodity getCommodityFile(){
-	
+	ifstream ifs;
+	ifs.open(address.c_str());
+	if (ifs.fail()){
+		cout << "Error occured opening the file." << endl;
+		return list;
+	}
 }
 
 /*debug only
