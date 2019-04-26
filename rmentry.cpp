@@ -1,5 +1,6 @@
 #include "main.h"
 #include "rmentry.h"
+#include "search.h"
 #include <vector>
 #include <iostream>
 using namespace std;
@@ -13,7 +14,7 @@ using namespace main_header;
 // @return none
 // -----------------------------------------------
 void remove_one(std::vector<main_header::Commodity> &list, int index){
-	
+	list.erase(list.begin() + index);
 }
 
 // -------------------------------------
@@ -24,8 +25,20 @@ void remove_one(std::vector<main_header::Commodity> &list, int index){
 // @return none
 // -------------------------------------
 void remove(std::vector<main_header::Commodity> &list){
-	
-}
+	bool confirmed = 0;
+	string id;
+	while (not confirmed){
+		cin >> id;
+		int index = idfindcom(list, id);
+		if (index == -1){
+			cout << id << " not found.\n";
+		}
+		else{
+			confirmed = true;
+		}
+		remove_one(list, index);
+		cout << "You have successfully deleted the item.\n";
+ }
 
 // ------------------------------
 // Function print_warning: prints a deletion warning on the screen
@@ -34,8 +47,8 @@ void remove(std::vector<main_header::Commodity> &list){
 // @return bool: true if user wants to proceed, false otherwise.
 // ------------------------------
 bool print_warning(){
-	cout >> "Are u confirmed to remove this item from the inventory?" >> endl;
-	cout >> "Y/N";
+	cout << "Are u confirmed to remove this item from the inventory?" << endl;
+	cout << "Y/N";
 	char input;
 	if (input == "Y"){
 		returns true
