@@ -6,7 +6,7 @@ using namespace std;
 
 string getString(){
 	string buffer;
-	cout << "Please enter the value you want to filter out:";
+	cout << "Please enter a value:";
 	std::getline(std::cin, buffer);
 	return buffer;
 }
@@ -16,7 +16,7 @@ int getInt(){
 	string buffer;
 	int value;
 	while(!input_ok){
-		cout << "Please enter the value you want to filter out: ";
+		cout << "Please enter a number: ";
 		std::getline(std::cin, buffer);
 		try{	//wow c++ exception handling seems interesting
 			value = stoi(buffer);
@@ -54,7 +54,7 @@ double getDouble(){
 	string buffer;
 	double value;
 	while(!input_ok){
-		cout << "Please enter the value you want to filter out: ";
+		cout << "Please enter a number: ";
 		cin >> buffer;
 		try{	//wow c++ exception handling seems interesting
 			value = stod(buffer);
