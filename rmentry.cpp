@@ -27,17 +27,23 @@ void remove_one(std::vector<main_header::Commodity> &list, int index){
 void remove(std::vector<main_header::Commodity> &list){
 	bool confirmed = 0;
 	string id;
+	int index;
 	while (not confirmed){
+		cout << "The id you want to delete is?\n";
 		cin >> id;
-		int index = idfindcom(list, id);
+		index = idfindcom(list, id);
 		if (index == -1){
 			cout << id << " not found.\n";
+			cout << "Please try again";
 		}
 		else{
 			confirmed = true;
 		}
+	]
+	if (print_warning()){
 		remove_one(list, index);
-		cout << "You have successfully deleted the item.\n";
+		cout << "The deletion has been successfully completed.\n";
+	}
  }
 
 // ------------------------------
