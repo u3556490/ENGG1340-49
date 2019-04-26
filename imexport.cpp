@@ -22,7 +22,7 @@ vector<Commodity> import_file(){
 	string address;
 	string line;
 	
-	cout << "Regarding the file's format: Each attribute are separated by semicolons and leave no new line at the end of the file,";
+	cout << "Regarding the file's format: Attributes are separated by semicolons and one leaves no new line at the end of the file,";
 	cout << "which is to be saved as a text file. The attributes come in order of id, name, manufacturer, unit price, expiry date (ddmmyyyy)";
 	cout << ", stock amount, stock warning level, shop id, shop stockpile amount. Each line is an entry in the inventory." << endl;
 	cout << "-------------------------------------------------------------------" << endl;
