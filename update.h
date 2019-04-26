@@ -23,6 +23,6 @@ void update(std::vector<main_header::Commodity> &list);
 // @return none
 // -----------------------------------
 // TODO: figure out the layout of the file to read
-void getUpdateFile();
+void getUpdateFile(std::vector<main_header::Commodity> &list);
 
 #endif /*UPDATE*/
