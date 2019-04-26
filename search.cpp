@@ -1,5 +1,6 @@
 #include "main.h"
 #include "search.h"
+#include "inpututil.h"
 #include <vector>
 #include <iostream>
 using namespace std;
@@ -267,8 +268,226 @@ vector<int> shopout_search(vector<Commodity> list, bool tag){
 // @return vector<int>: the indices of the matches.
 // -------------------------------
 vector<int> search(vector<Commodity> list){
+	string buffer;
+	bool input_ok = 0;
+	int criterion = 0;
+	cout >> "Which criteria are you going to use to search?" endl;
+	cout << "1. id\n2. name\n3. manufacturer\n";
+	cout << "4. price\n5. expiry date\n6. stock amount\n";
+	cout << "7. warning level\n8. stock warning\n9. out of stock\n";
+	cout << "10. shop id\n11. shop stock amount\n12. shop stock warning\n13. shop out of stock\n";
+	cout << "--------------------------------------------------------\n";
+	while (!input_ok){
+		cout << "Please enter a number: ";
+		cin >> buffer;
+		criterion = atoi(buffer.c_str());
+		if ((criterion < 1) || (criterion > 13)){
+			cout << "Please check your input and try again." << endl;
+		} else {
+			input_ok = 1;
+		}
+	}
 	
+	switch(criterion){
+		case 1: {
+			string value = getString();
+			int result = idfindcom(*current, value);	//there exists only one match
+			if (result == -1){
+				cout << "Searching unsuccessful: id " << value << " not found.\n";
+			} else {
+				selected.clear();
+				selected.push_back((*current)[result]);
+				cout << "Search successfully set. \n";
+				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". \n";
+			}
+			break;
+		}
+		case 2: {
+			string value = getString();
+			vector<int> result = name_search(*current, value);	
+			if (result.size() == 0){
+				cout << "Searching unsuccessful: name " << value << " not found.\n";
+			} else {
+				selected.clear();
+				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
+					selected.push_back((*current)[(*i)]);	//god damn this pointer syntax!
+				}
+				cout << "Search successfully set. The first item in the selected list is: \n";		
+				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
+			}
+			break;
+		}
+		case 3: {
+			string value = getString();
+			vector<int> result = manu_search(*current, value);	
+			if (result.size() == 0){
+				cout << "Searching unsuccessful: manufacturer " << value << " not found.\n";
+			} else {
+				selected.clear();
+				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
+				selected.push_back((*current)[(*i)]);	//god damn this pointer syntax!
+				}
+				cout << "Search successfully set. The first item in the selected list is: \n";
+				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
+			}
+			break;
+		}
+		case 4: {
+			double value = getDouble();
+			vector<int> result = price_search(*current, value);	
+			if (result.size() == 0){
+				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
+			} else {
+				selected.clear();
+				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
+					selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
+				}
+				cout << "Search successfully set. The first item in the selected list is: \n";
+				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
+			}
+			break;
+		}
+		case 5: {
+			string value = getString();
+			vector<int> result = date_search(*current, value);	
+			if (result.size() == 0){
+				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
+			} else {
+				selected.clear();
+				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
+					selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
+				}
+				cout << "Search successfully set. The first item in the selected list is: \n";
+				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
+				filter_count++;
+				current = & selected;
+			}
+			break;
+		}
+		case 6: {
+			int value = getInt();
+			vector<int> result = stockamt_search(*current, value);	
+			if (result.size() == 0){
+				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
+			} else {
+				selected.clear();
+				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
+					selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
+				}
+				cout << "Search successfully set. The first item in the selected list is: \n";
+				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
+			}
+			break;
+		}
+		case 7: {
+			int value = getInt();
+			vector<int> result = level_search(*current, value);	
+			if (result.size() == 0){
+				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
+			} else {
+				selected.clear();
+				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
+					selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
+				}
+				cout << "Search successfully set. The first item in the selected list is: \n";
+				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
+			}
+			break;
+		}	
+		case 8: {
+			bool value = getBool();
+			vector<int> result = stockwarn_search(*current, value);	
+			if (result.size() == 0){
+				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
+			} else {
+				selected.clear();
+				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
+					selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
+				}
+				cout << "Search successfully set. The first item in the selected list is: \n";
+				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
+			}
+			break;
+		}
+		case 9: {
+			bool value = getBool();
+			vector<int> result = stockout_search(*current, value);	
+			if (result.size() == 0){
+				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
+			} else {
+				selected.clear();
+				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
+					selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
+				}
+				cout << "Search successfully set. The first item in the selected list is: \n";
+				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
+			}
+			break;
+		}
+		case 10: {
+			string value = getString();
+			vector<int> result = shopid_search(*current, value);	
+			if (result.size() == 0){
+				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
+			} else {
+				selected.clear();
+				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
+					selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
+				}
+				cout << "Search successfully set. The first item in the selected list is: \n";
+				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
+			}
+			break;
+		}
+		case 11: {
+			int value = getInt();
+			vector<int> result = shopamt_search(*current, value);	
+			if (result.size() == 0){
+				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
+			} else {
+				selected.clear();
+				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
+					selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
+					}
+				cout << "Search successfully set. The first item in the selected list is: \n";
+				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
+			}
+			break;
+		}
+		case 12: {
+			bool value = getBool();
+			vector<int> result = shopwarn_search(*current, value);	
+			if (result.size() == 0){
+				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
+			} else {
+				selected.clear();
+				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
+					selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
+				}
+				cout << "Search successfully set. The first item in the selected list is: \n";
+				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
+			}
+			break;
+		}
+		case 13: {
+			bool value = getBool();
+			vector<int> result = shopout_search(*current, value);	
+			if (result.size() == 0){
+				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
+			} else {
+				selected.clear();
+				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
+					selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
+				}
+				cout << "Search successfully set. The first item in the selected list is: \n";
+				cout << (selected[0]).id << " \"" << (selected[0]).name << "\". Totally " << selected.size() << " items searched out.\n";
+			}
+			break;
+		}
+	}
+	return selected;
 }
+	
 
 /* debug
 int main(){
