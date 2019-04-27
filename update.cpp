@@ -41,7 +41,7 @@ void update(vector<Commodity> &list){
 	else{
 		while (not exit){
 			int index;
-			while (not input ok){
+			while (not input_ok){
 				cout << "What would you like to do?\n";
 				cout << "1.Enter an id\n";
 				cout << "2.Type -1 to exit\n";
@@ -56,12 +56,12 @@ void update(vector<Commodity> &list){
 					cout << "The input id cannot be found\n";
 				}
 				else{
-					input ok = true;
+					input_ok = true;
 				}
 			}
-			input ok = false; 
+			input_ok = false; 
 			int choice;
-			while (not input ok){		
+			while (not input_ok){		
 				cout << "Which criteria are you going to use to edit?" << endl;
 				cout << "1. id\n";
 				cout << "2. name\n";
@@ -205,7 +205,7 @@ void getUpdateFile(vector<Commodity> &list){
 	}
 	string buffer;
 	getline(ifstream, buffer);
-	n = atoi(buffer);
+	n = atoi(buffer.c_str());
 	if (n < 1){
 		cout << "The number of updates is incorrect!\n";
 	}
