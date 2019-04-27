@@ -305,7 +305,8 @@ vector<Commodity> search(vector<Commodity> list){
 			int result = idfindcom(list, value);	
 			if (result == -1){
 				cout << "Searching unsuccessful: id " << value << " not found.\n";
-			} else {
+			} 
+			else {
 				selected.clear();
 				selected.push_back((list)[result]);
 				cout << "Search successfully set. \n";
@@ -318,7 +319,8 @@ vector<Commodity> search(vector<Commodity> list){
 			vector<int> result = name_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: name " << value << " not found.\n";
-			} else {
+			} 
+			else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 					selected.push_back((list)[(*i)]);	
@@ -333,7 +335,8 @@ vector<Commodity> search(vector<Commodity> list){
 			vector<int> result = manu_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: manufacturer " << value << " not found.\n";
-			} else {
+			} 
+			else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 				selected.push_back((list)[(*i)]);	
@@ -348,7 +351,8 @@ vector<Commodity> search(vector<Commodity> list){
 			vector<int> result = price_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
-			} else {
+			} 
+			else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 					selected.push_back((list)[(*i)]);	
@@ -363,7 +367,8 @@ vector<Commodity> search(vector<Commodity> list){
 			vector<int> result = date_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
-			} else {
+			}
+			else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 					selected.push_back((list)[(*i)]);	
@@ -378,7 +383,8 @@ vector<Commodity> search(vector<Commodity> list){
 			vector<int> result = stockamt_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
-			} else {
+			} 
+			else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 					selected.push_back((list)[(*i)]);	
@@ -393,7 +399,8 @@ vector<Commodity> search(vector<Commodity> list){
 			vector<int> result = level_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
-			} else {
+			} 
+			else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 					selected.push_back((list)[(*i)]);	
@@ -408,7 +415,8 @@ vector<Commodity> search(vector<Commodity> list){
 			vector<int> result = stockwarn_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
-			} else {
+			} 
+			else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 					selected.push_back((list)[(*i)]);	
@@ -423,7 +431,8 @@ vector<Commodity> search(vector<Commodity> list){
 			vector<int> result = stockout_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
-			} else {
+			}
+			else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 					selected.push_back((list)[(*i)]);	
@@ -438,7 +447,8 @@ vector<Commodity> search(vector<Commodity> list){
 			vector<int> result = shopid_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
-			} else {
+			}
+			else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 					selected.push_back((list)[(*i)]);	
@@ -453,7 +463,8 @@ vector<Commodity> search(vector<Commodity> list){
 			vector<int> result = shopamt_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
-			} else {
+			}
+			else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 					selected.push_back((list)[(*i)]);	
@@ -468,7 +479,8 @@ vector<Commodity> search(vector<Commodity> list){
 			vector<int> result = shopwarn_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
-			} else {
+			} 
+			else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 					selected.push_back((list)[(*i)]);	
@@ -483,7 +495,8 @@ vector<Commodity> search(vector<Commodity> list){
 			vector<int> result = shopout_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
-			} else {
+			} 
+			else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 					selected.push_back((list)[(*i)]);	
