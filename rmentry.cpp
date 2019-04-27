@@ -14,7 +14,7 @@ using namespace main_header;
 // @return none
 // -----------------------------------------------
 void remove_one(std::vector<main_header::Commodity> &list, int index){
-	list.erase(list.begin() + index);
+	list.erase(list.begin() + index);				//do that directly
 }
 
 // -------------------------------------
@@ -34,7 +34,7 @@ void remove(std::vector<main_header::Commodity> &list){
 		index = idfindcom(list, id);
 		if (index == -1){
 			cout << id << " not found.\n";
-			cout << "Please try again";
+			cout << "Please try again";				//sweet reminder :)
 		}
 		else{
 			confirmed = true;
