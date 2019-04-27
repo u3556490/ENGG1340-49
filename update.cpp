@@ -203,6 +203,32 @@ void getUpdateFile(vector<Commodity> &list){
 	if (ifs.fail()){
 		cout << "Error occured opening the file." << endl;
 	}
+	string buffer;
+	getline(ifstream, buffer);
+	n = atoi(buffer);
+	if (n < 1){
+		cout << "The number of updates is incorrect!\n";
+	}
+	else{
+		continue;
+		for (int i = 0; i < n; i++){
+			buffer = getline(ifstream, buffer);
+			stringstream ss (buffer);
+			string token;
+			getline(ss,token,';');
+			int index = idfindcom(list, token);
+			if (index == -1){
+				cout << "The item cannot be found!\n";
+			}
+			else{
+				continue;
+				getline(ss,token,';');
+				string column = token;
+				getline(ss,token,';');
+				string value = token;
+			}
+		}
+	}
 	ifs.close();
 }
 
