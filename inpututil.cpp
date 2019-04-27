@@ -6,6 +6,7 @@
 #include <ios>
 using namespace std;
 
+//this program seperates different functions by the type of data input: int, bool, double and string
 string getString(){
 	cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
 	string buffer;
@@ -23,11 +24,11 @@ int getInt(){
 	while(!input_ok){
 		cout << "Please enter a number: ";
 		cin >> *buffer;
-		try{	//wow c++ exception handling seems interesting
+		try{	//learning new c++ knowledge :)
 			value = stoi(*buffer);
 		} 
 		catch (std::invalid_argument){
-			cout << "Please check your input and try again.\n";
+			cout << "Please check your input and try again.\n";    //sweet reminder to the users when having invalid argument
 		}
 		input_ok = 1;
 	}
@@ -51,7 +52,7 @@ bool getBool(){
 			input_ok = 1;
 		}
 		else{
-			cout << "Please check your input and try again.\n";
+			cout << "Please check your input and try again.\n";    //sweet reminder to the users when having invalid argument
 		}
 	}
 	delete buffer;
@@ -69,7 +70,7 @@ double getDouble(){
 			value = stod(*buffer);
 		} 
 		catch (std::invalid_argument){
-			cout << "Please check your input and try again.\n";
+			cout << "Please check your input and try again.\n";   //sweet reminder to the users when having invalid argument
 		}
 		input_ok = 1;
 	}
