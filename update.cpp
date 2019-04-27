@@ -23,46 +23,46 @@ void update(vector<Commodity> &list){
 	bool exit = 0;
 	string buffer;
 	bool input_ok = 0;
-	int criterion = 0;
 	
-	cout << "How would you like to update the commodity?\n";
+	cout << "How would you like to update the commodity?\n";               //ask the user the method to perform the update
 	cout << "1. one-by-one manually\n";
-	cout << "2. go back\n";
+	cout << "2. by importing from a file\n";
+	cout << "3. go back\n";
+	cout << "--------------------------------------------------------\n";
 	cout << "Please enter a number: ";
 	char input;
 	cin >> input;
-	if (input == '1'){
-		Commodity com = getCommodityData();
-		add_one(list, com);
+	if (input == '2'){
+		getUpdateFile(list);      
 	}
-	else if (input == '2'){
+	else if (input == '3'){
 		return;
 	}
-	else{
+	else if (input == '1'){
 		while (not exit){
+			string id;
 			int index;
+			input_ok = 0;
 			while (not input_ok){
-				cout << "What would you like to do?\n";
-				cout << "1.Enter an id\n";
-				cout << "2.Type -1 to exit\n";
-				cin >> index; 
-				
-			        if (input == -1){
-					exit = true; 
-					return;
-				}
-				index = idfindcom
+				cout << "Enter the id of the item to edit.\n";
+				cout << "Enter '-1' (without quotes) to finish and quit.\n";	
+				id = getString();
+			        	if (id == "-1"){
+						exit = true; 
+						return;
+					}
+				index = idfindcom(list, id);
 				if (index == -1){
-					cout << "The input id cannot be found\n";
+					cout << "The input id cannot be found. Please try again.\n";
 				}
 				else{
 					input_ok = true;
 				}
 			}
-			input_ok = false; 
+			bool choice_ok = false; 
 			int choice;
-			while (not input_ok){		
-				cout << "Which criteria are you going to use to edit?" << endl;
+			while (not choice_ok){		
+				cout << "Which criteria are you going to use to edit?" << endl;   //show the list of criteria to the user
 				cout << "1. id\n";
 				cout << "2. name\n";
 				cout << "3. manufacturer\n";
@@ -70,112 +70,97 @@ void update(vector<Commodity> &list){
 				cout << "5. expiry date\n";
 				cout << "6. stock amount\n";
 				cout << "7. warning level\n";
-				cout << "8. stock warning\n";
-				cout << "9. out of stock\n";
-				cout << "10. shop id\n";
-				cout << "11. shop stock amount\n";
-				cout << "12. shop stock warning\n";
-				cout << "13. shop out of stock\n";
+				cout << "8. shop id\n";
+				cout << "9. shop stock amount\n";
 				cout << "--------------------------------------------------------\n";
-				while (!input_ok){
+				while (!choice_ok){
 					cout << "Please enter a number: ";
 					cin >> buffer;
-					criterion = atoi(buffer.c_str());
-					if ((criterion < 1) || (criterion > 13)){
+					choice = atoi(buffer.c_str());
+					if ((criterion < 1) || (criterion > 9)){
 						cout << "Please check your input and try again." << endl;
 					} 
 					else {
-						input_ok = 1;
+						choice_ok = 1;
 					}
 				}
 			}
-			switch (criterion){
+			switch (choice){                 //using switch to perform different update.
 				case 1: { 
+					cout << "Modifying id of item " << list[index].id << " : " << list[index].name << ".\n";
 					string value = getString();
 					int num = idfindcom(list, value);
 					if (num == -1){
-						cout << "There is contradiction to the entry ids.\n";
+						cout << "There is contradiction to the entry ids. No changes has been made.\n";
 					} 
 					else {
 						list[index].id = value;
+						cout << "Action successfully performed.\n";
 					}
 					break;
 				}
 				case 2: {
+					cout << "Modifying name of item " << list[index].id << " : " << list[index].name << ".\n";
 					string value = getString();
-					vector<int> nums = idfindcom(list, value);
 					list[index].name = value; 
+					cout << "Action successfully performed.\n";
 					break; 
 				}
 				case 3: {
+					cout << "Modifying manufacturer of item " << list[index].id << " : " << list[index].name << ".\n";
 					string value = getString();
-					vector<int> nums = idfindcom(list, value);
 					list[index].manufacturer = value; 
+					cout << "Action successfully performed.\n";
 					break; 
 				}
 				case 4: {
-					string value = getString();
-					vector<int> nums = idfindcom(list, value);
+					cout << "Modifying unit price of item " << list[index].id << " : " << list[index].name << ".\n";
+					double value = getDouble();
 					list[index].price = value;
+					cout << "Action successfully performed.\n";
 					break;
 				}
 				case 5: {
+					cout << "Modifying expiry date of item " << list[index].id << " : " << list[index].name << ".\n";
 					string value = getString();
-					vector<int> nums = idfindcom(list, value);
 					list[index].expiry_date = value; 
+					cout << "Action successfully performed.\n";
 					break; 
 				}
 				case 6: {
-					string value = getString();
-					vector<int> nums = idfindcom(list, value);
+					cout << "Modifying stock amount of item " << list[index].id << " : " << list[index].name << ".\n";
+					int value = getInt();
 					list[index].stock_amount = value; 
+					cout << "Action successfully performed.\n";
 					break; 
 				}
 				case 7: {
-					string value = getString();
-					vector<int> nums = idfindcom(list, value);
+					cout << "Modifying warning level of item " << list[index].id << " : " << list[index].name << ".\n";
+					int value = getInt();
 					list[index].warning_level = value; 
+					cout << "Action successfully performed.\n";
 					break; 
 				}
 				case 8: {
+					cout << "Modifying shop id of item " << list[index].id << " : " << list[index].name << ".\n";
 					string value = getString();
-					vector<int> nums = idfindcom(list, value);
-					list[index].stock_warning = value; 
+					list[index].shop_id = value;
+					cout << "Action successfully performed.\n";
 					break; 
 				}
 				case 9: {
-					string value = getString();
-					vector<int> nums = idfindcom(list, value);
-					list[index].out_of_stock = value; 
+					cout << "Modifying shop stock amount of item " << list[index].id << " : " << list[index].name << ".\n";
+					int value = getInt();
+					list[index].shop_stock_amount = value;
+					cout << "Action successfully performed.\n";
 					break; 
-				}
-				case 10: {
-					string value = getString();
-					vector<int> nums = idfindcom(list, value);
-					list[index].shop_id = value;
-					break; 
-				}
-				case 11: {
-					string value = getString();
-					vector<int> nums = idfindcom(list, value);
-					list[index].shop_stock_amount = value; 
-					break; 
-				}
-				case 12: {
-					string value = getString();
-					vector<int> nums = idfindcom(list, value);
-					list[index].shop_stock_warning = value; 
-					break; 
-				}
-				case 13: {
-					string value = getString();
-					vector<int> nums = idfindcom(list, value);
-					list[index].shop_out_of_stock = value; 
-					break; 
-				}
+				}                  //there is reminders telling the users error has been occured in each case :)
 			}
 		}
 	} 
+	else{
+		cout << "Incorrect option. No updating has been performed.\n";
+	}
 }
 
 // -----------------------------------
@@ -192,42 +177,125 @@ void getUpdateFile(vector<Commodity> &list){
 	ifstream ifs;
 	string address;
 	
-	cout << "Regarding the file's format: Attributes are separated by semicolons and one leaves no new line at the end of the file,";
-	cout << "which is to be saved as a text file. The attributes come in order of id, name, manufacturer, unit price, expiry date (ddmmyyyy)";
-	cout << ", stock amount, stock warning level, shop id, shop stockpile amount. Each line is an entry in the inventory." << endl;
+	cout << "Regarding the file's format: The first line is an integer n, indicating n amendments to be made.";
+	cout << "The following n lines are the n amendments. Each line contains 3 fields: 1st one is the id of";
+	cout << "the item to work on, 2nd one is a mnemonic (abbreviation) of the attribute to change and ";
+	cout << "the 3rd one is the value to change to. The fields are semicolon (;) separated." << endl; 
+	cout << "There should not be any empty lines at the end of the file. The last field should end with a semicolon." << endl;
+	cout << "Attribute full name (left) and mnemonic (right) correspondence list for reference: " << endl;
+	cout << "ID: id" << endl;
+	cout << "Name: name" << endl;
+	cout << "Manufacturer: manu" << endl;
+	cout << "Unit price: price" << endl;
+	cout << "Expiry date: date" << endl;                              //clear instruction to the users how this function runs
+	cout << "Amount at HQ/Warehouse: amt" << endl;
+	cout << "Warning level: level" << endl;                                
+	cout << "Shop ID: shop" << endl;
+	cout << "Amount at shop: samt" << endl;
 	cout << "-------------------------------------------------------------------" << endl;
-	cout << "Enter the address of the inventory file with file extension: ";
+	cout << "Enter the address of the update file with file extension: ";
 	cin >> address;
 	
 	ifs.open(address.c_str());
 	if (ifs.fail()){
 		cout << "Error occured opening the file." << endl;
+		return;	//!
 	}
+	
 	string buffer;
-	getline(ifstream, buffer);
-	n = atoi(buffer.c_str());
+	std::getline(ifs, buffer);
+	int n = atoi(buffer.c_str());
 	if (n < 1){
-		cout << "The number of updates is incorrect!\n";
+		cout << "The number of updates is incorrect! No changes have been made.\n";
 	}
 	else{
-		continue;
 		for (int i = 0; i < n; i++){
-			buffer = getline(ifstream, buffer);
+			std::getline(ifs, buffer);
 			stringstream ss (buffer);
 			string token;
 			getline(ss,token,';');
+			cout << "Processing update " << i+1 << " of " << n << ": Editing item " << token << "......\n"; 	
 			int index = idfindcom(list, token);
 			if (index == -1){
-				cout << "The item cannot be found!\n";
+				cout << "The item cannot be found! Skipping to next update.\n";
 			}
 			else{
-				continue;
 				getline(ss,token,';');
 				string column = token;
 				getline(ss,token,';');
-				string value = token;
+				string value = token;      //using criteria to seperate different case
+				
+				if (column == "id"){
+					if (idfindcom(list, value) != -1){
+						cout << "The new id specified is in conflict with a preexisting one.\n";
+					} 
+					else {
+						list[index].id = value;
+						cout << "New id (" << value << ") given to item.\n";
+					}
+				}
+				else if (column == "name"){
+					list[index].name = value;
+					cout << "New name (" << value << ") given to item.\n";
+				}
+				else if (column == "manu"){
+					list[index].manufacturer = value;
+					cout << "New manufacturer name (" << value << ") given to item.\n";
+				}
+				else if (column == "price"){
+					double preis = atof(value.c_str());
+					if (preis < 0){
+						cout << "The new price specified is invalid.\n";
+					} 
+					else {
+						list[index].price = preis;
+						cout << "New name (" << value << ") given to item.\n";
+					}
+				}
+				else if (column == "date"){
+					list[index].expiry_date = value;
+					cout << "New expiry date (" << value << ") given to item.\n";
+				}
+				else if (column == "amt"){
+					int amt = atoi(value.c_str());
+					if (amt < 0){
+						cout << "The new amount specified is invalid.\n";
+					} 
+					else {
+						list[index].stock_amount = amt;
+						cout << "New stock amount (" << value << ") given to item.\n";
+					}
+				}
+				else if (column == "level"){
+					int level = atoi(value.c_str());
+					if (level < 0){
+						cout << "The new amount specified is invalid.\n";
+					} 
+					else {
+						list[index].warning_level = level;
+						cout << "New stock amount (" << value << ") given to item.\n";
+					}
+				}
+				else if (column == "shop"){
+					list[index].shop_id = value;
+					cout << "New shop id (" << value << ") given to item.\n";
+				}
+				else if (column == "samt"){
+					int amt = atoi(value.c_str());
+					if (amt < 0){
+						cout << "The new amount specified is invalid.\n";
+					} 
+					else {
+						list[index].shop_amount = amt;
+						cout << "New shop stock amount (" << value << ") given to item.\n";
+					}
+				}
+				else{
+					cout << "Incorrect mnemonic. Skipping to next update.\n";
+				}
 			}
 		}
+		cout << "Action successfully performed.\n"; 
 	}
 	ifs.close();
 }
