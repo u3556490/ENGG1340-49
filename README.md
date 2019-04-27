@@ -103,4 +103,6 @@
  
  #### Compilation and Execution Producedures
   To compile this application, one executes **_make project_** in a Bash shell where make is available. The executable would be named **_project_**. Run it directly to get the application running.  
+  
+  Included are three text files: *sample_add.txt*, an example file to feed into adding entry by file; *sample_inventory.txt*, an example file to feed into import inventory; and *sample_update.txt* an example file to feed into update from file.
 
