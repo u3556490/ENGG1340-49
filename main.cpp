@@ -63,7 +63,8 @@ void main_header::mainmenu(){
 		cout << "There are " << filter_count << " filters set, with " << (*current).size() << " items in the filtered list." << endl;
 		if (probs.size() < 1){																	//have problems?
 			cout << "There are no special warnings. ";
-		} else {																				//print names and ids of items
+		} 
+		else {																				//print names and ids of items
 			cout << "---------------------------------------------------------------" << endl;
 			cout << "There are items with stock issues. Namely: ";
 			for (int i = 0; i < probs.size(); i++){
@@ -77,7 +78,8 @@ void main_header::mainmenu(){
 				cout << ")";
 				if ((i+1) == probs.size()){
 					cout << endl;
-				} else {
+				} 
+				else {
 					cout << ", ";
 				}
 			}
@@ -107,7 +109,8 @@ void main_header::mainmenu(){
 			option = atoi(buffer.c_str());
 			if ((option < 1) || (option > 12)){	//better option is to catch stoi exceptions but nvm
 				cout << "Please check your input and try again.\n";
-			} else {
+			} 
+			else {
 				input_ok = 1;
 			}
 		}
