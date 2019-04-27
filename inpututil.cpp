@@ -2,13 +2,16 @@
 #include <string>
 #include <exception>
 #include <iostream>
+#include <limits>
+#include <ios>
 using namespace std;
 
 string getString(){
-	cin.ignore();
+	cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
 	string buffer;
-	cout << "Please enter a value:";
-	std::getline(std::cin, buffer);
+	cout << "Please enter a value: ";
+	std::getline(cin,buffer);
+	cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
 	return buffer;
 }
 
@@ -19,7 +22,7 @@ int getInt(){
 	int value;
 	while(!input_ok){
 		cout << "Please enter a number: ";
-		std::getline(std::cin, *buffer);
+		cin >> *buffer;
 		try{	//wow c++ exception handling seems interesting
 			value = stoi(*buffer);
 		} 
@@ -28,6 +31,7 @@ int getInt(){
 		}
 		input_ok = 1;
 	}
+	cin;
 	delete buffer;
 	return value;
 }

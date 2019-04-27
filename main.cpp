@@ -90,16 +90,17 @@ void main_header::mainmenu(){
 		//print option list
 		cout << "1. Add new entry"<< endl;
 		cout << "2. Remove obsolete entry" << endl;
-		cout << "3. Import and load inventory from file" << endl;
-		cout << "4. Export and save current (with filters) inventory to file" << endl;
-		cout << "5. Search for entries" << endl;
-		cout << "6. Filter entries content" << endl;
-		cout << "7. Unset all filters and searches effect" << endl;
-		cout << "8. Print current inventory (with filters) contents on screen" << endl;
-		cout << "9. Sort current inventory (with filters) in order" << endl;
-		cout << "10. Set stockpile warning level" << endl;
-		cout << "11. Check stock status once more" << endl;
-		cout << "12. Exit the application" << endl;
+		cout << "3. Update entries" << endl;
+		cout << "4. Import and load inventory from file" << endl;
+		cout << "5. Export and save current (with filters) inventory to file" << endl;
+		cout << "6. Search for entries" << endl;
+		cout << "7. Filter entries content" << endl;
+		cout << "8. Unset all filters and searches effect" << endl;
+		cout << "9. Print current inventory (with filters) contents on screen" << endl;
+		cout << "10. Sort current inventory (with filters) in order" << endl;
+		cout << "11. Set stockpile warning level" << endl;
+		cout << "12. Check stock status once more" << endl;
+		cout << "13. Exit the application" << endl;
 		cout << "================================================================" << endl;
 		bool input_ok = 0;
 		while (!input_ok){ //input check
@@ -107,7 +108,7 @@ void main_header::mainmenu(){
 			//get option
 			cin >> buffer;
 			option = atoi(buffer.c_str());
-			if ((option < 1) || (option > 12)){	//better option is to catch stoi exceptions but nvm
+			if ((option < 1) || (option > 13)){	//better option is to catch stoi exceptions but nvm
 				cout << "Please check your input and try again.\n";
 			} 
 			else {
@@ -125,48 +126,52 @@ void main_header::mainmenu(){
 				break;
 			}
 			case (3):{
+				update(inventory);	//update
+				break;
+			}
+			case (4):{
 				inventory = import_file();	//import
 				sort_id(inventory);
 				current = & inventory;
 				break;
 			}
-			case (4):{
+			case (5):{
 				export_file(current);	//export
 				break;
 			}
-			case (5):{	//search
+			case (6):{	//search
 				filtered = search(*current);
 				current = &filtered;	
 				break;
 			}
-			case (6):{	//filter
+			case (7):{	//filter
 				filtered = filter(*current, filter_count);	//must not be local!
 				current = &filtered;
 				//cout << (*current)[0].name << "\n";
 				break;
 			}
-			case (7):{
+			case (8):{
 				current = &inventory;	//reset filter
 				filter_count = 0;
 				break;
 			}
-			case (8):{
+			case (9):{
 				print_inv(*current);	//print stuff
 				break;
 			}
-			case (9):{
+			case (10):{
 				sort_list(*current);	//sort
 				break;
 			}
-			case (10):{
+			case (11):{
 				setLevel(inventory);	//set level
 				break;
 			}
-			case (11):{
+			case (12):{
 				probs = check_stock(& inventory);	//check stock
 				break;
 			}
-			case (12):{	//quit
+			case (13):{	//quit
 				quit = 1;
 				break;
 			}

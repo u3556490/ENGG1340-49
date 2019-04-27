@@ -78,7 +78,7 @@ vector<int> check_stock(vector<Commodity>* list){
 	//for each
 	for (vector<Commodity>::iterator i = list->begin(); i != list->end(); i++){
 		//check hq stockpile
-		if ((*i).stock_amount < (*i).warning_level){
+		if ((*i).stock_amount <= (*i).warning_level){
 			temp_set.insert(index);
 			(*i).stock_warning = 1;
 			if ((*i).stock_amount < 1){
@@ -86,7 +86,7 @@ vector<int> check_stock(vector<Commodity>* list){
 			}
 		}
 		//check shop stockpile
-		if ((*i).shop_amount < (*i).warning_level){
+		if ((*i).shop_amount <= (*i).warning_level){
 			temp_set.insert(index);
 			(*i).shop_stock_warning = 1;
 			if ((*i).shop_amount < 1){

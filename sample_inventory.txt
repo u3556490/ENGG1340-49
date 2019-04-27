@@ -1,0 +1,10 @@
+000001;SU Can coupon;HKU;0.00;20190425;30;0;0001;10
+000002;SU Can coupon;HKU;0.00;20190425;30;0;0002;0
+000003;Themen Aktuell 1;Hueber;288.00;00000000;3;5;0001;0
+000004;In Time;Software on Demand;108.00;00000000;20;0;0001;20
+000005;Anthony Wong CD;abcdef;233.59;00000000;50;0;0001;10
+000006;StackOverflow Sample Program;asdfgh;1.00;1;0;0002;1
+000007;Collins German Dictionary;Collins;234.56;15;10;0003;1
+000008;SU Can coupon;HKU;0.00;20190425;30;0;0003;1
+000009;Scott Joplin Ragtimes;Marshall;1066.05;2;1;0002;2
+000010;Folding stool;Kalashnikov;1.25;3;0;0001;72

@@ -19,6 +19,7 @@ void print_inv(vector<Commodity> list){
 	int index;
 	vector<Commodity>::iterator position = list.begin();
 	while (not exit){
+		cout << "------------------------------------------------------\n";
 		cout << "Commodity id: " << (*position).id << endl;
 		cout << "Commodity name: " << (*position).name << endl;
 		cout << "Commodity manufacturer: " << (*position).manufacturer << endl;
@@ -27,7 +28,7 @@ void print_inv(vector<Commodity> list){
 		cout << "Commodity stock amount: " << (*position).stock_amount << endl;
 		cout << "Commodity warning level: " << (*position).warning_level << endl;
 		cout << "Commodity stock warning: " << (*position).stock_warning << endl;
-		cout << "Commodity out of stock;: " << (*position).out_of_stock; << endl;
+		cout << "Commodity out of stock;: " << (*position).out_of_stock << endl;
 		cout << "Commodity shop id: " << (*position).shop_id << endl;
 		cout << "Commodity shop amount: " << (*position).shop_amount << endl;
 		cout << "Commodity shop stock warning: " << (*position).shop_stock_warning << endl;
@@ -49,6 +50,7 @@ void print_inv(vector<Commodity> list){
 				input_ok = 1;
 			}
 		}
+		input_ok = 0;
 	
 		switch(criterion){
 			case 1: {
@@ -58,9 +60,13 @@ void print_inv(vector<Commodity> list){
 				break;
 			}
 			case 2: {
+				cout << "Please enter an integer x, such that we skip to the x-th item: ";
 				cin >> index;
-				if ((index < 0 ) || (index >= (list.size()))
+				index--;	//indicies begin at zero
+				if ((index > 0 ) && (index <= list.size()))
 					position = list.begin() + index;
+				else 
+					cout << "Please check your input.\n";
 				break;
 			}
 			case 3: {
@@ -68,7 +74,6 @@ void print_inv(vector<Commodity> list){
 				break; 
 			}
 			default: cout << "There is an error in your input" << endl;
-			}
 		}
 	}
 }
