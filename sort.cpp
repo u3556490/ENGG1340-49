@@ -105,7 +105,8 @@ void sort_list(vector<Commodity> &original){
 		if ((col < 1) || (col > 13)){
 			cout << "Please check your input and try again.\n";
 			sorted = 0;
-		} else {
+		} 
+		else {
 			input_ok = 1;
 		}
 	}
