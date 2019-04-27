@@ -102,9 +102,9 @@ Commodity getCommodityFile(){
 	
 	cout << "Regarding the file's format: Attributes are separated by semicolons and one leaves no new line at the end of the file,";
 	cout << "which is to be saved as a text file. The attributes come in order of id, name, manufacturer, unit price, expiry date (ddmmyyyy)";
-	cout << ", stock amount, stock warning level, shop id, shop stockpile amount. Each line is an entry in the inventory." << endl;
+	cout << ", stock amount, stock warning level, shop id, shop stockpile amount. The file contains the only line (entry) to import." << endl;
 	cout << "-------------------------------------------------------------------" << endl;
-	cout << "Enter the address of the inventory file with file extension: ";
+	cout << "Enter the address of the commodity file with file extension: ";
 	cin >> address;
 	
 	ifs.open(address.c_str());

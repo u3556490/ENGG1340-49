@@ -55,7 +55,7 @@ void print_inv(vector<Commodity> list){
 				position++;
 				if (position == list.end()) 
 					exit = true; 
-					break;
+				break;
 			}
 			case 2: {
 				cin >> index;
