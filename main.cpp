@@ -86,8 +86,8 @@ void main_header::mainmenu(){
 		cout << "Ready\n";
 		cout << "What do you want to do?" << endl;
 		//print option list
-		cout << "1. Add new entry/entries"<< endl;
-		cout << "2. Remove obsolete entry/entries" << endl;
+		cout << "1. Add new entry"<< endl;
+		cout << "2. Remove obsolete entry" << endl;
 		cout << "3. Import and load inventory from file" << endl;
 		cout << "4. Export and save current (with filters) inventory to file" << endl;
 		cout << "5. Search for entries" << endl;

@@ -5,6 +5,7 @@
 using namespace std;
 
 string getString(){
+	cin.ignore();
 	string buffer;
 	cout << "Please enter a value:";
 	std::getline(std::cin, buffer);
@@ -12,6 +13,7 @@ string getString(){
 }
 
 int getInt(){
+	cin.ignore();
 	bool input_ok = 0;
 	string * buffer = new string;
 	int value;

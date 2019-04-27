@@ -73,7 +73,6 @@ vector<Commodity> filter(vector<Commodity> original, int &count){
 			quit = 1;
 			break;
 		}
-		cin.ignore();	//a fix for the getline's
 		
 		//get value to find and find the entries
 		switch(criterion){
