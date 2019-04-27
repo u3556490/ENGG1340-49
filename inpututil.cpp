@@ -20,7 +20,8 @@ int getInt(){
 		std::getline(std::cin, *buffer);
 		try{	//wow c++ exception handling seems interesting
 			value = stoi(*buffer);
-		} catch (std::invalid_argument){
+		} 
+		catch (std::invalid_argument){
 			cout << "Please check your input and try again.\n";
 		}
 		input_ok = 1;
@@ -44,8 +45,9 @@ bool getBool(){
 			value = 0;
 			input_ok = 1;
 		}
-		else
+		else{
 			cout << "Please check your input and try again.\n";
+		}
 	}
 	delete buffer;
 	return value;
@@ -60,7 +62,8 @@ double getDouble(){
 		cin >> *buffer;
 		try{	//wow c++ exception handling seems interesting
 			value = stod(*buffer);
-		} catch (std::invalid_argument){
+		} 
+		catch (std::invalid_argument){
 			cout << "Please check your input and try again.\n";
 		}
 		input_ok = 1;
