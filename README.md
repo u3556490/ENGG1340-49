@@ -91,15 +91,18 @@
      > Unit price: price  
      > Expiry date: date  
      > Amount at HQ/Warehouse: amt  
+     > Stock warning level: level  
      > Shop ID: shop  
      > Shop amount: samt  
      
      As a result, an example of editing entries is as follows:  
      > 3  
-     > 000003;name;Deutsch als Fremdsprache: Themen Aktuell 2  
-     > 000003;amt;350  
-     > 000007;name;SU can coupon  
+     > 000003;name;Deutsch als Fremdsprache: Themen Aktuell 2;  
+     > 000003;amt;350;  
+     > 000007;name;SU can coupon;  
  
  #### Compilation and Execution Producedures
   To compile this application, one executes **_make project_** in a Bash shell where make is available. The executable would be named **_project_**. Run it directly to get the application running.  
+  
+  Included are three text files: *sample_add.txt*, an example file to feed into adding entry by file; *sample_inventory.txt*, an example file to feed into import inventory; and *sample_update.txt* an example file to feed into update from file.
 
