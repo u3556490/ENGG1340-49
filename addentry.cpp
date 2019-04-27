@@ -26,7 +26,7 @@ void add_one(vector<Commodity> &list, Commodity item){
 // @return none
 // -----------------------------------
 void add(vector<Commodity> &list){
-	cout << "How would you like to add the commodity?\n";
+	cout << "How would you like to add the commodity?\n";			//asking the user the method to add the commodity
 	cout << "1. one-by-one manually\n";
 	cout << "2. through file\n";
 	cout << "Please enter a number: ";
@@ -56,7 +56,7 @@ void add(vector<Commodity> &list){
 // -----------------------------------
 Commodity getCommodityData(){
 	
-	Commodity com;
+	Commodity com;   					//seperating by criteria
 
 	cout << "Please enter the id below.\n";
 	com.id = getString();
@@ -112,7 +112,7 @@ Commodity getCommodityFile(){
 		cout << "Error occured opening the file." << endl;
 		return com;
 	}
-	string line;
+	string line;					//using file to add the data
 	
 	getline(ifs, line);		   
 	stringstream ss (line);
