@@ -60,7 +60,7 @@ void main_header::mainmenu(){
 		int filtered_size = (filter_count > 0) ? (*current).size() : 0;
 		cout << "=================================================================" << endl;
 		cout << "The inventory is now of size: " << inventory.size() << "." << endl;
-		cout << "There are " << filter_count << " filters set, with " << (*current).size() << " items in the filtered list." << endl;
+		cout << "There are " << filter_count << " filters set, with " << filtered_size << " items in the filtered list." << endl;
 		if (probs.size() < 1){																	//have problems?
 			cout << "There are no special warnings. ";
 		} 

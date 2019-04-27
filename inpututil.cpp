@@ -11,7 +11,7 @@ string getString(){
 	string buffer;
 	cout << "Please enter a value: ";
 	std::getline(cin,buffer);
-	cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+	cin.putback('\n');
 	return buffer;
 }
 
@@ -31,7 +31,6 @@ int getInt(){
 		}
 		input_ok = 1;
 	}
-	cin;
 	delete buffer;
 	return value;
 }
