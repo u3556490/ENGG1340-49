@@ -11,14 +11,6 @@
 using namespace main_header;
 using namespace std;
 
-/* Algorithm thought up for the appending/editing of ONE specific commodity entry such that ONE of its attributes is changed */
-/* Step 1: find the entry to amend and mark its index in the vector.
-   Step 2: make a copy of the entry.
-   Step 3: change the attribute of the copy. E.g. if id is to be changed, then copy.id = new_id 
-   Step 4: call replacec(list, index, edited_object) to replace the original entry with the copy. 
- */
-/* For editing multiple entries, the subroutine replacec() should be called more than once. */
-
 // -------------------------------------
 // Function update: will be called immediately when
 // the user wants to update the inventory. Lead him to the right functions
