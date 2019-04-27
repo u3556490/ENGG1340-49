@@ -97,9 +97,9 @@
      
      As a result, an example of editing entries is as follows:  
      > 3  
-     > 000003;name;Deutsch als Fremdsprache: Themen Aktuell 2  
-     > 000003;amt;350  
-     > 000007;name;SU can coupon  
+     > 000003;name;Deutsch als Fremdsprache: Themen Aktuell 2;  
+     > 000003;amt;350;  
+     > 000007;name;SU can coupon;  
  
  #### Compilation and Execution Producedures
   To compile this application, one executes **_make project_** in a Bash shell where make is available. The executable would be named **_project_**. Run it directly to get the application running.  
