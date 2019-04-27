@@ -44,7 +44,8 @@ void print_inv(vector<Commodity> list){
 			criterion = atoi(buffer.c_str());
 			if ((criterion < 1) || (criterion > 3)){
 				cout << "Please check your input and try again." << endl;
-			} else {
+			} 
+			else {
 				input_ok = 1;
 			}
 		}
@@ -66,8 +67,7 @@ void print_inv(vector<Commodity> list){
 				exit = true; 
 				break; 
 			}
-			default{
-				cout << "There is an error in your input" << endl;
+			default: cout << "There is an error in your input" << endl;
 			}
 		}
 	}
