@@ -20,7 +20,7 @@ void print_inv(vector<Commodity> list){
 	vector<Commodity>::iterator position = list.begin();
 	while (not exit){
 		cout << "------------------------------------------------------\n";
-		cout << "Commodity id: " << (*position).id << endl;
+		cout << "Commodity id: " << (*position).id << endl;			//clearly showing the table of all criterias
 		cout << "Commodity name: " << (*position).name << endl;
 		cout << "Commodity manufacturer: " << (*position).manufacturer << endl;
 		cout << "Commodity price: " << (*position).price << endl;
@@ -52,7 +52,7 @@ void print_inv(vector<Commodity> list){
 		}
 		input_ok = 0;
 	
-		switch(criterion){
+		switch(criterion){		//using switch to run this function that has different cases based on user input
 			case 1: {
 				position++;
 				if (position == list.end()) 
@@ -73,8 +73,8 @@ void print_inv(vector<Commodity> list){
 				exit = true; 
 				break; 
 			}
-			default: cout << "There is an error in your input" << endl;
-		}
+			default: cout << "There is an error in your input" << endl;		//there is always a sweet reminder to tell the user error has occured
+		}                									
 	}
 }
 
