@@ -91,6 +91,7 @@
      > Unit price: price  
      > Expiry date: date  
      > Amount at HQ/Warehouse: amt  
+     > Stock warning level: level  
      > Shop ID: shop  
      > Shop amount: samt  
      
