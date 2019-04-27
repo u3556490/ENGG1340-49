@@ -35,7 +35,8 @@ void setLevel(vector<Commodity> &list){
 		cin >> buffer;	//assuming no one is "smart" enough to use spaces in his id
 		if (!comexist(list, buffer)){
 			cout << "Your input it faulty. Please try again.\n";
-		} else {
+		} 
+		else {
 			ok = 1;
 		}
 	}
@@ -44,10 +45,12 @@ void setLevel(vector<Commodity> &list){
 	while (!ok){
 		cout << "Please enter the desired new warning level (whole number): ";
 		cin >> buffer;
-		if (atoi(buffer.c_str()) >= 0)
+		if (atoi(buffer.c_str()) >= 0){
 			ok = 1;
-		else
+		}
+		else{
 			cout << "Your input it faulty. Please try again.\n";
+		}
 	}
 	level = atoi(buffer.c_str());
 	//fetch item
@@ -67,8 +70,9 @@ void setLevel(vector<Commodity> &list){
 vector<int> check_stock(vector<Commodity>* list){
 	unordered_set<int> temp_set;				//unique item indices. Not handling further information yet
 	//if size < 1, return none
-	if (list->size() < 1)
+	if (list->size() < 1){
 		return vector<int>{};
+	}
 	
 	int index = 0;
 	//for each
@@ -77,15 +81,17 @@ vector<int> check_stock(vector<Commodity>* list){
 		if ((*i).stock_amount < (*i).warning_level){
 			temp_set.insert(index);
 			(*i).stock_warning = 1;
-			if ((*i).stock_amount < 1)
+			if ((*i).stock_amount < 1){
 				(*i).out_of_stock = 1;
+			}
 		}
 		//check shop stockpile
 		if ((*i).shop_amount < (*i).warning_level){
 			temp_set.insert(index);
 			(*i).shop_stock_warning = 1;
-			if ((*i).shop_amount < 1)
+			if ((*i).shop_amount < 1){
 				(*i).shop_out_of_stock = true;
+			}
 		}
 		index++;
 	}

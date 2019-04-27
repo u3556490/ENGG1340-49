@@ -26,7 +26,10 @@ void add_one(vector<Commodity> &list, Commodity item){
 // @return none
 // -----------------------------------
 void add(vector<Commodity> &list){
-	cout << "How would you like to add the commodity?\n1. one-by-one manually\n2. through file\n";
+	cout << "How would you like to add the commodity?\n";
+	cout << "1. one-by-one manually\n";
+	cout << "2. through file\n";
+	cout << "Please enter a number: ";
 	char input;
 	cin >> input;
 	if (input == '1'){
@@ -95,9 +98,15 @@ Commodity getCommodityData(){
 Commodity getCommodityFile(){
 	ifstream ifs;
 	Commodity com;
-	//???? Address ?????
 	string address;
-	//??????
+	
+	cout << "Regarding the file's format: Attributes are separated by semicolons and one leaves no new line at the end of the file,";
+	cout << "which is to be saved as a text file. The attributes come in order of id, name, manufacturer, unit price, expiry date (ddmmyyyy)";
+	cout << ", stock amount, stock warning level, shop id, shop stockpile amount. Each line is an entry in the inventory." << endl;
+	cout << "-------------------------------------------------------------------" << endl;
+	cout << "Enter the address of the inventory file with file extension: ";
+	cin >> address;
+	
 	ifs.open(address.c_str());
 	if (ifs.fail()){
 		cout << "Error occured opening the file." << endl;

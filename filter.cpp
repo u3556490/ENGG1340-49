@@ -53,10 +53,19 @@ vector<Commodity> filter(vector<Commodity> original, int &count){
 		cout << "Setting up filter #" << filter_count+1 << ". " << filter_count << " filters have been set." << endl;
 		cout << "The size of the filtered list is now " << (*current).size() << ".\n";
 		cout << "Please select a criterion from the following list: \n";
-		cout << "1. id\n2. name\n3. manufacturer\n";
-		cout << "4. price\n5. expiry date\n6. stock amount\n";
-		cout << "7. warning level\n8. stock warning\n9. out of stock\n";
-		cout << "10. shop id\n11. shop stock amount\n12. shop stock warning\n13. shop out of stock\n";
+		cout << "1. id\n";
+		cout << "2. name\n";
+		cout << "3. manufacturer\n";
+		cout << "4. price\n";
+		cout << "5. expiry date\n";
+		cout << "6. stock amount\n";
+		cout << "7. warning level\n";
+		cout << "8. stock warning\n";
+		cout << "9. out of stock\n";
+		cout << "10. shop id\n";
+		cout << "11. shop stock amount\n";
+		cout << "12. shop stock warning\n";
+		cout << "13. shop out of stock\n";
 		cout << "14. finish and return\n";
 		cout << "--------------------------------------------------------\n";
 		while (!input_ok){	//repeat
@@ -65,7 +74,8 @@ vector<Commodity> filter(vector<Commodity> original, int &count){
 			criterion = atoi(buffer.c_str());	//check if the input value is an integer and lies in [1,14].
 			if ((criterion < 1) || (criterion > 14)){
 				cout << "Please check your input and try again." << endl;
-			} else {
+			} 
+			else {
 				input_ok = 1;
 			}
 		}
@@ -81,7 +91,8 @@ vector<Commodity> filter(vector<Commodity> original, int &count){
 				int result = idfindcom(*current, value);	//there exists only one match, just one int is enough
 				if (result == -1){	//commodity not found
 					cout << "Filtering unsuccessful: id " << value << " not found.\n";
-				} else {
+				} 
+				else {
 					selected.clear();	//reset
 					selected.push_back((*current)[result]);	//add item to selected
 					cout << "Filter successfully set. The first item in the selected list is: \n";
@@ -96,7 +107,8 @@ vector<Commodity> filter(vector<Commodity> original, int &count){
 				vector<int> result = name_search(*current, value);	//multiple matches are possible
 				if (result.size() == 0){
 					cout << "Filtering unsuccessful: name " << value << " not found.\n";
-				} else {
+				} 
+				else {
 					selected.clear();
 					for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 						selected.push_back((*current)[(*i)]);	//god damn this pointer syntax!
@@ -113,7 +125,8 @@ vector<Commodity> filter(vector<Commodity> original, int &count){
 				vector<int> result = manu_search(*current, value);	
 				if (result.size() == 0){
 					cout << "Filtering unsuccessful: manufacturer " << value << " not found.\n";
-				} else {
+				} 
+				else {
 					selected.clear();
 					for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 						selected.push_back((*current)[(*i)]);
@@ -130,7 +143,8 @@ vector<Commodity> filter(vector<Commodity> original, int &count){
 				vector<int> result = price_search(*current, value);	
 				if (result.size() == 0){
 					cout << "Filtering unsuccessful: expiry date " << value << " not found.\n";
-				} else {
+				} 
+				else {
 					selected.clear();
 					for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 						selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
@@ -147,7 +161,8 @@ vector<Commodity> filter(vector<Commodity> original, int &count){
 				vector<int> result = date_search(*current, value);	
 				if (result.size() == 0){
 					cout << "Filtering unsuccessful: expiry date " << value << " not found.\n";
-				} else {
+				} 
+				else {
 					selected.clear();
 					for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 						selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
@@ -164,7 +179,8 @@ vector<Commodity> filter(vector<Commodity> original, int &count){
 				vector<int> result = stockamt_search(*current, value);	
 				if (result.size() == 0){
 					cout << "Filtering unsuccessful: expiry date " << value << " not found.\n";
-				} else {
+				} 
+				else {
 					selected.clear();
 					for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 						selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
@@ -181,7 +197,8 @@ vector<Commodity> filter(vector<Commodity> original, int &count){
 				vector<int> result = level_search(*current, value);	
 				if (result.size() == 0){
 					cout << "Filtering unsuccessful: expiry date " << value << " not found.\n";
-				} else {
+				} 
+				else {
 					selected.clear();
 					for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 						selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
@@ -198,7 +215,8 @@ vector<Commodity> filter(vector<Commodity> original, int &count){
 				vector<int> result = stockwarn_search(*current, value);	
 				if (result.size() == 0){
 					cout << "Filtering unsuccessful: expiry date " << value << " not found.\n";
-				} else {
+				} 
+				else {
 					selected.clear();
 					for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 						selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
@@ -215,7 +233,8 @@ vector<Commodity> filter(vector<Commodity> original, int &count){
 				vector<int> result = stockout_search(*current, value);	
 				if (result.size() == 0){
 					cout << "Filtering unsuccessful: expiry date " << value << " not found.\n";
-				} else {
+				}
+				else {
 					selected.clear();
 					for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 						selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
@@ -232,7 +251,8 @@ vector<Commodity> filter(vector<Commodity> original, int &count){
 				vector<int> result = shopid_search(*current, value);	
 				if (result.size() == 0){
 					cout << "Filtering unsuccessful: expiry date " << value << " not found.\n";
-				} else {
+				} 
+				else {
 					selected.clear();
 					for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 						selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
@@ -249,7 +269,8 @@ vector<Commodity> filter(vector<Commodity> original, int &count){
 				vector<int> result = shopamt_search(*current, value);	
 				if (result.size() == 0){
 					cout << "Filtering unsuccessful: expiry date " << value << " not found.\n";
-				} else {
+				} 
+				else {
 					selected.clear();
 					for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 						selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
@@ -266,7 +287,8 @@ vector<Commodity> filter(vector<Commodity> original, int &count){
 				vector<int> result = shopwarn_search(*current, value);	
 				if (result.size() == 0){
 					cout << "Filtering unsuccessful: expiry date " << value << " not found.\n";
-				} else {
+				} 
+				else {
 					selected.clear();
 					for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 						selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!
@@ -283,7 +305,8 @@ vector<Commodity> filter(vector<Commodity> original, int &count){
 				vector<int> result = shopout_search(*current, value);	
 				if (result.size() == 0){
 					cout << "Filtering unsuccessful: expiry date " << value << " not found.\n";
-				} else {
+				} 
+				else {
 					selected.clear();
 					for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 						selected.push_back((*current)[(*i)]);	//god damn this pointer syntax! and the copy-paste!

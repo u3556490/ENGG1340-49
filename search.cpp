@@ -274,10 +274,19 @@ vector<Commodity> search(vector<Commodity> list){
 	vector<Commodity> selected;
 	
 	cout << "Which criteria are you going to use to search?" << endl;
-	cout << "1. id\n2. name\n3. manufacturer\n";
-	cout << "4. price\n5. expiry date\n6. stock amount\n";
-	cout << "7. warning level\n8. stock warning\n9. out of stock\n";
-	cout << "10. shop id\n11. shop stock amount\n12. shop stock warning\n13. shop out of stock\n";
+	cout << "1. id\n";
+	cout << "2. name\n";
+	cout << "3. manufacturer\n";
+	cout << "4. price\n";
+	cout << "5. expiry date\n";
+	cout << "6. stock amount\n";
+	cout << "7. warning level\n";
+	cout << "8. stock warning\n";
+	cout << "9. out of stock\n";
+	cout << "10. shop id\n";
+	cout << "11. shop stock amount\n";
+	cout << "12. shop stock warning\n";
+	cout << "13. shop out of stock\n";
 	cout << "--------------------------------------------------------\n";
 	while (!input_ok){
 		cout << "Please enter a number: ";
@@ -296,7 +305,8 @@ vector<Commodity> search(vector<Commodity> list){
 			int result = idfindcom(list, value);	
 			if (result == -1){
 				cout << "Searching unsuccessful: id " << value << " not found.\n";
-			} else {
+			} 
+			else {
 				selected.clear();
 				selected.push_back((list)[result]);
 				cout << "Search successfully set. \n";
@@ -309,7 +319,8 @@ vector<Commodity> search(vector<Commodity> list){
 			vector<int> result = name_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: name " << value << " not found.\n";
-			} else {
+			} 
+			else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 					selected.push_back((list)[(*i)]);	
@@ -324,7 +335,8 @@ vector<Commodity> search(vector<Commodity> list){
 			vector<int> result = manu_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: manufacturer " << value << " not found.\n";
-			} else {
+			} 
+			else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 				selected.push_back((list)[(*i)]);	
@@ -339,7 +351,8 @@ vector<Commodity> search(vector<Commodity> list){
 			vector<int> result = price_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
-			} else {
+			} 
+			else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 					selected.push_back((list)[(*i)]);	
@@ -354,7 +367,8 @@ vector<Commodity> search(vector<Commodity> list){
 			vector<int> result = date_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
-			} else {
+			}
+			else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 					selected.push_back((list)[(*i)]);	
@@ -369,7 +383,8 @@ vector<Commodity> search(vector<Commodity> list){
 			vector<int> result = stockamt_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
-			} else {
+			} 
+			else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 					selected.push_back((list)[(*i)]);	
@@ -384,7 +399,8 @@ vector<Commodity> search(vector<Commodity> list){
 			vector<int> result = level_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
-			} else {
+			} 
+			else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 					selected.push_back((list)[(*i)]);	
@@ -399,7 +415,8 @@ vector<Commodity> search(vector<Commodity> list){
 			vector<int> result = stockwarn_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
-			} else {
+			} 
+			else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 					selected.push_back((list)[(*i)]);	
@@ -414,7 +431,8 @@ vector<Commodity> search(vector<Commodity> list){
 			vector<int> result = stockout_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
-			} else {
+			}
+			else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 					selected.push_back((list)[(*i)]);	
@@ -429,7 +447,8 @@ vector<Commodity> search(vector<Commodity> list){
 			vector<int> result = shopid_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
-			} else {
+			}
+			else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 					selected.push_back((list)[(*i)]);	
@@ -444,7 +463,8 @@ vector<Commodity> search(vector<Commodity> list){
 			vector<int> result = shopamt_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
-			} else {
+			}
+			else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 					selected.push_back((list)[(*i)]);	
@@ -459,7 +479,8 @@ vector<Commodity> search(vector<Commodity> list){
 			vector<int> result = shopwarn_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
-			} else {
+			} 
+			else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 					selected.push_back((list)[(*i)]);	
@@ -474,7 +495,8 @@ vector<Commodity> search(vector<Commodity> list){
 			vector<int> result = shopout_search(list, value);	
 			if (result.size() == 0){
 				cout << "Searching unsuccessful: expiry date " << value << " not found.\n";
-			} else {
+			} 
+			else {
 				selected.clear();
 				for (vector<int>::iterator i = result.begin(); i != result.end(); i++){
 					selected.push_back((list)[(*i)]);	

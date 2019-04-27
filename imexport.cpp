@@ -121,8 +121,9 @@ bool export_file(vector<Commodity>* list){
 		Commodity com = *i;
 		ofs << com.id << ";" << com.name << ";" << com.manufacturer << ";" << com.price << ";" << com.expiry_date << ";" << com.stock_amount << ";";
 		ofs << com.warning_level << ";" << com.shop_id << ";" << com.shop_amount;
-		if ((i+1) != list->end())	//no end of line characters for the last entry
+		if ((i+1) != list->end()){	//no end of line characters for the last entry
 			ofs << endl;
+		}
 	}
 	
 	ofs.close();	//close file
