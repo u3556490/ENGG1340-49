@@ -273,7 +273,7 @@ vector<Commodity> search(vector<Commodity> list){
 	int criterion = 0;
 	vector<Commodity> selected;
 	
-	cout << "Which criteria are you going to use to search?" << endl;
+	cout << "Which criteria are you going to use to search?" << endl;        //using a clear table to show the criterias
 	cout << "1. id\n";
 	cout << "2. name\n";
 	cout << "3. manufacturer\n";
@@ -299,7 +299,7 @@ vector<Commodity> search(vector<Commodity> list){
 		}
 	}
 	
-	switch(criterion){
+	switch(criterion){					//using switch to seperate different cases
 		case 1: {
 			string value = getString();
 			int result = idfindcom(list, value);	
